@@ -55,9 +55,9 @@ class UserController extends Controller
         if ($user->save()) {
             return redirect()->route('admin.user')->with('success', 'Data added successfully');
         }else {
-                   
+
             return redirect()->route('admin.user.create')->with('error', 'Data failed to add');
-    
+
            }
     }
 
@@ -102,11 +102,11 @@ class UserController extends Controller
         if ( $user->save()) {
 
             return redirect()->route('admin.user')->with('success', 'Data updated successfully');
-    
+
            } else {
-               
+
             return redirect()->route('admin.user.edit')->with('error', 'Data failed to update');
-    
+
            }
     }
 
@@ -118,11 +118,11 @@ class UserController extends Controller
         if ( $user->save()) {
 
             return redirect()->route('admin.user')->with('success', 'Password updated successfully');
-    
+
            } else {
-               
+
             return redirect()->route('admin.user')->with('error', 'Password failed to update');
-    
+
            }
     }
 

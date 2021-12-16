@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -46,6 +46,23 @@ class OperadoresController extends Controller
 
         $operadores = new operadores($request->except('_token'));
 
+        $foto = $request->file('foto');
+        $dni_img = $request->file('dni_img');
+        if($foto){
+            $fotopath = $foto->store('operadoe/'.$request->nombre, 'public');
+
+            $operadores->foto = $fotopath;
+        }else{
+            $operadores->dni_img ='';
+        }
+        if($dni_img){
+            $dni_imgpath = $dni_img->store('operadoe/'.$request->nombre, 'public');
+
+            $operadores->dni_img = $dni_imgpath;
+        }else{
+            $operadores->dni_img ='';
+        }
+
 
         if ( $operadores->save()) {
 
@@ -79,8 +96,9 @@ class OperadoresController extends Controller
     public function edit($id)
     {
         $operadores = Operadores::findOrFail($id);
+        $entidad=EntidadesFormadoreas::select('id','nombre')->get();
 
-        return view('admin.operadores.edit',compact('operadores'));
+        return view('admin.operadores.edit',compact('operadores','entidad'));
     }
 
     /**

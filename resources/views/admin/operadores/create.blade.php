@@ -56,10 +56,10 @@
 
     <div class="form-group ml-5">
 
-        <label for="socio" class="col-sm-2 col-form-label">Dni</label>
+        <label for="dni" class="col-sm-2 col-form-label">Dni</label>
 
         <div class="col-sm-7">
-            <input type="text" name='dni' class="form-control {{$errors->first('dni') ? "is-invalid" : "" }} " value="{{old('dni')}}" id="dni" placeholder="dni">
+            <input type="text" name='dni' class="form-control {{$errors->first('dni') ? "is-invalid" : "" }} " value="{{old('dni')}}" id="dni" placeholder="Documento identificativo">
             <div class="invalid-feedback">
                 {{ $errors->first('dni') }}
             </div>
@@ -67,9 +67,9 @@
     </div>
 
     <div class="form-group ml-5">
-        <label for="cif" class="col-sm-2 col-form-label">Apellidos</label>
+        <label for="apellidos" class="col-sm-2 col-form-label">Apellidos</label>
         <div class="col-sm-7">
-            <input type="text" name='apellidos' class="form-control {{$errors->first('apellidos') ? "is-invalid" : "" }} " value="{{old('apellidos')}}" id="apellidos" placeholder="apellidos">
+            <input type="text" name='apellidos' class="form-control {{$errors->first('apellidos') ? "is-invalid" : "" }} " value="{{old('apellidos')}}" id="apellidos" placeholder="Apellidos">
             <div class="invalid-feedback">
                 {{ $errors->first('apellidos') }}
             </div>
@@ -88,10 +88,10 @@
     </div>
 
         <div class="form-group ml-5">
-            <label for="category" class="col-sm-2 col-form-label">Entidad</label>
+            <label for="entidad" class="col-sm-2 col-form-label">Entidad</label>
             <div class="col-sm-9">
                 <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
-                    <option disabled selected>Choose One!</option>
+                    <option disabled selected>{{__('message.Choose_One')}}</option>
                     @foreach ($entidad as $entidad)
                         <option value="{{ $entidad->id }}">{{ $entidad->nombre }}</option>
                     @endforeach
@@ -103,7 +103,7 @@
         </div>
 
     <div class="form-group ml-5">
-        <label for="razon_social" class="col-sm-2 col-form-label">Foto</label>
+        <label for="foto" class="col-sm-2 col-form-label">Foto</label>
         <div class="col-sm-7">
             <input type="file" name='foto' class="form-control {{$errors->first('foto') ? "is-invalid" : "" }} " value="{{old('foto')}}" id="foto" placeholder="foto">
             <div class="invalid-feedback">
@@ -113,7 +113,7 @@
     </div>
 
     <div class="form-group ml-5">
-        <label for="province" class="col-sm-2 col-form-label">Dni Img</label>
+        <label for="dni_img" class="col-sm-2 col-form-label">Dni Img</label>
         <div class="col-sm-7">
             <input type="file" name='dni_img' class="form-control {{$errors->first('dni_img') ? "is-invalid" : "" }} " value="{{old('dni_img')}}" id="dni_img" placeholder="dni_img">
             <div class="invalid-feedback">
@@ -123,7 +123,7 @@
     </div>
 
     <div class="form-group ml-5">
-        <label for="ciudad" class="col-sm-2 col-form-label">Fecha Nacimiento</label>
+        <label for="fecha_nacimiento" class="col-sm-2 col-form-label">Fecha Nacimiento</label>
         <div class="col-sm-7">
             <input type="date" name='fecha_nacimiento' class="form-control {{$errors->first('fecha_nacimiento') ? "is-invalid" : "" }} " value="{{old('fecha_nacimiento')}}" id="fecha_nacimiento" placeholder="fecha nacimiento">
             <div class="invalid-feedback">
@@ -132,7 +132,7 @@
         </div>
     </div>
         <div class="form-group ml-5">
-            <label for="direccion" class="col-sm-2 col-form-label">Provincia</label>
+            <label for="provincia" class="col-sm-2 col-form-label">Provincia</label>
             <div class="col-sm-7">
                 <input type="text" name='provincia' class="form-control {{$errors->first('provincia') ? "is-invalid" : "" }} " value="{{old('provincia')}}" id="provincia" placeholder="Provincia">
                 <div class="invalid-feedback">
@@ -141,7 +141,7 @@
             </div>
         </div>
         <div class="form-group ml-5">
-            <label for="direccion" class="col-sm-2 col-form-label">Ciudad</label>
+            <label for="ciudad" class="col-sm-2 col-form-label">Ciudad</label>
             <div class="col-sm-7">
                 <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad')}}" id="ciudad" placeholder="Ciudad">
                 <div class="invalid-feedback">
@@ -153,7 +153,7 @@
         <div class="form-group ml-5">
             <label for="direccion" class="col-sm-2 col-form-label">direccion</label>
             <div class="col-sm-7">
-                <input type="text" name='direccion' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Domicilio de la sede">
+                <input type="text" name='direccion' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Dirección del formador">
                 <div class="invalid-feedback">
                     {{ $errors->first('linkedin') }}
                 </div>
@@ -163,7 +163,7 @@
         <div class="form-group ml-5">
             <label for="codigo_postal" class="col-sm-2 col-form-label">Codigo Postal</label>
             <div class="col-sm-7">
-                <input type="number" name='codigo_postal' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Código postal de la sede">
+                <input type="number" name='codigo_postal' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Código postal">
                 <div class="invalid-feedback">
                     {{ $errors->first('linkedin') }}
                 </div>
@@ -174,7 +174,7 @@
         <div class="form-group ml-5">
             <label for="mail" class="col-sm-2 col-form-label">mail</label>
             <div class="col-sm-7">
-                <input type="text" name='mail' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Correo electrónico">
+                <input type="text" name='mail' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Cuenta de correo">
                 <div class="invalid-feedback">
                     {{ $errors->first('linkedin') }}
                 </div>
@@ -182,9 +182,9 @@
         </div>
 
         <div class="form-group ml-5">
-            <label for="mail" class="col-sm-2 col-form-label">Carnet</label>
+            <label for="carnet" class="col-sm-2 col-form-label">Carnet</label>
             <div class="col-sm-7">
-                <input type="text" name='carnet' class="form-control {{$errors->first('carnet') ? "is-invalid" : "" }} " value="{{old('carnet')}}" id="carnet" placeholder="Carnet">
+                <input type="text" name='carnet' class="form-control {{$errors->first('carnet') ? "is-invalid" : "" }} " value="{{old('carnet')}}" id="carnet" placeholder="Número de carné">
                 <div class="invalid-feedback">
                     {{ $errors->first('carnet') }}
                 </div>

@@ -42,7 +42,7 @@ Name">
                     <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($entidad as $entidad)
-                            <option value="{{ $entidad->id }}">{{ $entidad->nombre }}</option>
+                            <option value="{{ $entidad->id }}" {{$formadores->entidad == $entidad->id ? "selected" : ""}}>{{ $entidad->nombre }}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">

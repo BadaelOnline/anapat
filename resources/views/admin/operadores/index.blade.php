@@ -42,11 +42,13 @@
 
                     <tr>
 
-                        <th>CIF.</th>
+
 
                         <th>Logo</th>
 
                         <th>Nombre</th>
+
+                        <th>Apellidos </th>
 
                         <th>Dirección </th>
 
@@ -68,15 +70,17 @@
 
                     <tr>
 
-                        <td>{{ $operadores->cif }}</td>
+
 
                         <td>
 
-                            <img src="{{asset('storage/' . $operadores->logo)}}" width="96px"/>
+                            <img src="{{asset('storage/' . $operadores->foto)}}" width="96px"/>
 
                         </td>
 
                         <td>{{ $operadores->nombre }}</td>
+
+                        <td>{{ $operadores->apellidos }}</td>
 
                         <td>{{ $operadores->direccion  }}</td>
 
