@@ -11,7 +11,7 @@
 <!-- Page Heading -->
 
 <h1 class="h3 mb-2 text-gray-800">asistent</h1>
-   
+
 @if (session('success'))
 
 <div class="alert alert-success">
@@ -42,13 +42,15 @@
 
                     <tr>
 
-                        <th>No.</th>
+                        <th>Apellido.</th>
 
-                        <th>Cover</th>
+                        <th>Nombre</th>
 
-                        <th>Client</th>
+                        <th>Número de asistente</th>
 
-                        <th>Project Date</th>
+                        <th>Nota Examen teorico	</th>
+
+                        <th>Nota Examen Practico	</th>
 
                         <th>Option</th>
 
@@ -59,49 +61,59 @@
                 <tbody>
 
                 @php
-                
-                $no=0;
-                
-                @endphp
-                
-                @foreach ($asistent as $asistent)
-                     
-                    <tr> 
-             
-                        <td>{{ ++$no }}</td>  
-                
-                        <td>
-                        
-                            <img src="{{ asset('storage/'.$asistent->cover) }}" alt="" style="height: 100px; width: 200px">
-                        
-                        </td> 
-                        
-                        <td>{{ $asistent->client }}</td>
 
-                        <td>{{ $asistent->date }}</td>
-                
-                        <td>    
-                
-                            <a href="{{route('admin.asistent.edit', [$asistent->id])}}" class="btn btn-info btn-sm"> Edit </a>
-                
-                            <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('Delete this asistent permanently?')">
-                
-                                @csrf
-                
-                                <input type="hidden" name="_method" value="DELETE">
-                
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                
-                            </form>
-                
+                $no=0;
+
+                @endphp
+
+                @foreach ($asistent as $asistent)
+
+                    <tr>
+
+                        <td>
+                            @foreach($operador as $ope)
+                            {{$ope->id == $asistent->operador ? $ope->apellidos : "" }}
+                            @endforeach
                         </td>
-            
+
+                        <td>
+                            @foreach($operador as $ope)
+                                {{$ope->id == $asistent->operador ? $ope->nombre : "" }}
+                            @endforeach
+                        </td>
+
+                        <td>
+
+                            {{ $asistent->orden }}
+
+                        </td>
+
+                        <td>{{ $asistent->nota_t }}</td>
+
+                        <td>{{ $asistent->nota_p }}</td>
+
+                        <td>
+
+                            <a href="{{route('admin.asistent.edit', [$asistent->id])}}" class="btn btn-info btn-sm"> Edit </a>
+
+                            <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('Delete this asistent permanently?')">
+
+                                @csrf
+
+                                <input type="hidden" name="_method" value="DELETE">
+
+                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+
+                            </form>
+
+                        </td>
+
                     </tr>
-            
+
                     @endforeach
-        
+
                 </tbody>
-    
+
             </table>
 
         </div>

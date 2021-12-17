@@ -11,7 +11,7 @@
 <!-- Page Heading -->
 
 <h1 class="h3 mb-2 text-gray-800">Cursos</h1>
-   
+
 @if (session('success'))
 
 <div class="alert alert-success">
@@ -42,13 +42,13 @@
 
                     <tr>
 
-                        <th>No.</th>
+                        <th>curso</th>
 
-                        <th>Cover</th>
+                        <th>codigo</th>
 
-                        <th>Client</th>
+                        <th>provincia</th>
 
-                        <th>Project Date</th>
+                        <th>direccion</th>
 
                         <th>Option</th>
 
@@ -59,49 +59,48 @@
                 <tbody>
 
                 @php
-                
-                $no=0;
-                
-                @endphp
-                
-                @foreach ($cursos as $cursos)
-                     
-                    <tr> 
-             
-                        <td>{{ ++$no }}</td>  
-                
-                        <td>
-                        
-                            <img src="{{ asset('storage/'.$cursos->cover) }}" alt="" style="height: 100px; width: 200px">
-                        
-                        </td> 
-                        
-                        <td>{{ $cursos->client }}</td>
 
-                        <td>{{ $cursos->date }}</td>
-                
-                        <td>    
-                
-                            <a href="{{route('admin.cursos.edit', [$cursos->id])}}" class="btn btn-info btn-sm"> Edit </a>
-                
-                            <form method="POST" action="{{route('admin.cursos.destroy', [$cursos->id])}}" class="d-inline" onsubmit="return confirm('Delete this cursos permanently?')">
-                
-                                @csrf
-                
-                                <input type="hidden" name="_method" value="DELETE">
-                
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                
-                            </form>
-                
+                $no=0;
+
+                @endphp
+
+                @foreach ($cursos as $cursos)
+
+                    <tr>
+
+                        <td>{{ $cursos->curso }}</td>
+
+                        <td>
+                            {{ $cursos->codigo }}
+
                         </td>
-            
+
+                        <td>{{ $cursos->provincia }}</td>
+
+                        <td>{{ $cursos->direccion }}</td>
+
+                        <td>
+
+                            <a href="{{route('admin.cursos.edit', [$cursos->id])}}" class="btn btn-info btn-sm"> Edit </a>
+
+                            <form method="POST" action="{{route('admin.cursos.destroy', [$cursos->id])}}" class="d-inline" onsubmit="return confirm('Delete this cursos permanently?')">
+
+                                @csrf
+
+                                <input type="hidden" name="_method" value="DELETE">
+
+                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+
+                            </form>
+
+                        </td>
+
                     </tr>
-            
+
                     @endforeach
-        
+
                 </tbody>
-    
+
             </table>
 
         </div>

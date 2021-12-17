@@ -110,13 +110,43 @@ class OperadoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        \Validator::make($request->all(), [
-            "icon" => "required",
-            "title" => "required",
-            "quote" => "required|max:255"
-        ])->validate();
+
 
         $operadores = Operadores::findOrFail($id);
+        $operadores->dni = $request->dni;
+        $operadores->apellidos = $request->apellidos;
+        $operadores->nombre = $request->nombre;
+        $operadores->entidad = $request->entidad;
+        $operadores->fecha_nacimiento = $request->fecha_nacimiento;
+        $operadores->provincia = $request->provincia;
+        $operadores->ciudad = $request->ciudad;
+        $operadores->direccion = $request->direccion;
+        $operadores->codigo_postal = $request->codigo_postal;
+        $operadores->mail = $request->mail;
+        $operadores->carnet = $request->carnet;
+        $operadores->fecha = $request->fecha;
+        $operadores->estado = $request->estado;
+
+        $foto = $request->file('foto');
+        $dni_img = $request->file('dni_img');
+        if($foto){
+            if($operadores->foto && file_exists(storage_path('app/public/' . $operadores->foto))){
+                \Storage::delete('public/'. $operadores->foto);
+            }
+
+            $foto_path = $foto->store('operadore/'.$request->nombre, 'public');
+
+            $operadores->foto = $foto_path;
+        }
+        if($dni_img){
+            if($operadores->dni_img && file_exists(storage_path('app/public/' . $operadores->dni_img))){
+                \Storage::delete('public/'. $operadores->dni_img);
+            }
+
+            $dni_img_path = $dni_img->store('operadore/'.$request->nombre, 'public');
+
+            $operadores->dni_img = $dni_img_path;
+        }
 
 
         if ( $operadores->save()) {

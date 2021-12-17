@@ -18,8 +18,9 @@ class AsistentController extends Controller
     public function index()
     {
         $asistent = Asistent::orderBy('id','desc')->get();
+        $operador = Operadores::orderBy('id','desc')->get();
 
-        return view('admin.asistent.index',compact('asistent'));
+        return view('admin.asistent.index',compact('asistent','operador'));
     }
 
     /**
@@ -50,6 +51,23 @@ class AsistentController extends Controller
 
         $asistent = new Asistent($request->except('_token'));
 
+        $examen_t_pdf = $request->file('examen_t_pdf');
+        if($examen_t_pdf){
+            $examen_t_pdf_path = $examen_t_pdf->store('asistent/', 'public');
+
+            $asistent->examen_t_pdf = $examen_t_pdf_path;
+        }else{
+            $asistent->examen_t_pdf ='';
+        }
+        $examen_p_pdf = $request->file('examen_p_pdf');
+        if($examen_p_pdf){
+            $examen_p_pdf_path = $examen_p_pdf->store('asistent/', 'public');
+
+            $asistent->examen_p_pdf = $examen_p_pdf_path;
+        }else{
+            $asistent->examen_p_pdf ='';
+        }
+
 
 //        $cover = $request->file('cover');
 //
@@ -61,11 +79,11 @@ class AsistentController extends Controller
         if ($asistent->save()) {
 
                 return redirect()->route('admin.asistent')->with('success', 'Data added successfully');
-        
+
                } else {
-                   
+
                 return redirect()->route('admin.asistent.create')->with('error', 'Data failed to add');
-        
+
                }
     }
 
@@ -89,9 +107,12 @@ class AsistentController extends Controller
     public function edit($id)
     {
         $asistent = Asistent::findOrFail($id);
-        $categories = Pcategory::get();
+        $curso=Cursos::select('id','codigo')->get();
+        $operador=Operadores::select('id','nombre')->get();
+        $tipo_carnet=Teoria::select('id','formacion')->get();
+        $tipo=Practica::select('id','practica')->get();
 
-        return view('admin.asistent.edit',compact('asistent','categories'));
+        return view('admin.asistent.edit',compact('asistent','curso','operador','tipo_carnet','tipo'));
     }
 
     /**
@@ -109,34 +130,55 @@ class AsistentController extends Controller
 //        ])->validate();
 
         $asistent = Asistent::findOrFail($id);
-//        $Asistent->pcategory_id = $request->category;
-//        $Asistent->name = $request->name;
-//        $Asistent->client = $request->client;
-//        $Asistent->desc = $request->desc;
-//        $Asistent->date = $request->date;
+        $asistent->curso = $request->curso;
+        $asistent->orden = $request->orden;
+        $asistent->operador = $request->operador;
+        $asistent->tipo_carnet = $request->tipo_carnet;
+        $asistent->nota_t = $request->nota_t;
+        $asistent->nota_p = $request->nota_p;
+        $asistent->observaciones = $request->observaciones;
+        $asistent->emision = $request->emision;
+        $asistent->vencimiento = $request->vencimiento;
+        $asistent->tipo_1 = $request->tipo_1;
+        $asistent->tipo_2 = $request->tipo_2;
+        $asistent->tipo_4 = $request->tipo_4;
+        $asistent->tipo_3 = $request->tipo_3;
 
 
-        $new_cover = $request->file('cover');
+        $examen_t_pdf = $request->file('examen_t_pdf');
 
-        if($new_cover){
-        if($asistent->cover && file_exists(storage_path('app/public/' . $asistent->cover))){
-            \Storage::delete('public/'. $asistent->cover);
+        if($examen_t_pdf){
+        if($asistent->examen_t_pdf && file_exists(storage_path('app/public/' . $asistent->examen_t_pdf))){
+            \Storage::delete('public/'. $asistent->examen_t_pdf);
         }
 
-        $new_cover_path = $new_cover->store('images/asistent', 'public');
+            $examen_t_pdf_path = $examen_t_pdf->store('images/asistent', 'public');
 
-        $asistent->cover = $new_cover_path;
-    
+        $asistent->examen_t_pdf = $examen_t_pdf_path;
+
         }
+        $examen_p_pdf = $request->file('examen_t_pdf');
+
+        if($examen_p_pdf){
+            if($asistent->examen_p_pdf && file_exists(storage_path('app/public/' . $asistent->examen_p_pdf))){
+                \Storage::delete('public/'. $asistent->examen_p_pdf);
+            }
+
+            $examen_p_pdf_path = $examen_p_pdf->store('images/asistent', 'public');
+
+            $asistent->examen_p_pdf = $examen_p_pdf_path;
+
+        }
+
 
         if ($asistent->save()) {
 
                 return redirect()->route('admin.asistent')->with('success', 'Data updated successfully');
-        
+
                } else {
-                   
+
                 return redirect()->route('admin.asistent.edit')->with('error', 'Data failed to update');
-        
+
                }
     }
 
