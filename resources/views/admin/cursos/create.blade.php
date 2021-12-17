@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('styles')
+
 @section('styles')
 <style>
    .picture-container {
@@ -48,25 +48,31 @@
 @endif
 
 <form action="{{ route('admin.cursos.store') }}" method="POST" enctype="multipart/form-data">
-<form action="{{ route('admin.cursos.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 {{--first row--}}
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <label for="name" class="col-sm-2 col-form-label">curso</label>
-                <input type="text" name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " value="{{old('curso')}}" id="name" placeholder="curso">
-                <div class="invalid-feedback">
-                    {{ $errors->first('curso') }}
+                <label for="curso" class="col-sm-2 col-form-label">curso</label>
+                <div class="col-sm-9">
+                    <input type="text" name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " value="{{$course_code}}" id="curso" placeholder="Código del curso">
+                    <div class="invalid-feedback">
+                        {{ $errors->first('curso') }}
+                    </div>
                 </div>
+
             </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
             <div class="col-sm">
-                <label for="name" class="col-sm-2 col-form-label">tipo_curso</label>
+                <label for="tipo_curso" class="col-sm-2 col-form-label">tipo_curso</label>
                 <div class="col-sm-9">
                     <select name='tipo_curso' class="form-control {{$errors->first('tipo_curso') ? "is-invalid" : "" }} " id="tipo_curso">
-                        <option disabled selected>Choose One!</option>
+                        <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($tipo_curso as $tipo_curso)
-                            <option value="{{ $tipo_curso->id }}">{{ $tipo_curso->name }}</option>
+                            <option value="{{ $tipo_curso->id }}">{{ $tipo_curso->tipo_curso }}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -74,16 +80,22 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
             <div class="col-sm">
-                <label for="category" class="col-sm-2 col-form-label">tipo_maquina</label>
+                <label for="tipo_maquina" class="col-sm-2 col-form-label">tipo_maquina</label>
+                <div class="col-sm-9">
                 @foreach($tipo_maquina as $tipo_maquina)
                 <div class="form-check">
-                    <input class="form-check-input" name="tipo_maquina.{{$tipo_maquina->id}}" type="checkbox" value="{{$tipo_maquina->id}}" id="{{$tipo_maquina->id}}">
+                    <input class="form-check-input" name="tipo_maquina[]" type="checkbox" value="{{$tipo_maquina->id}}" id="{{$tipo_maquina->id}}">
                     <label class="form-check-label" for="flexCheckDefault">
                         {{$tipo_maquina->tipo_maquina}}
                     </label>
                 </div>
                     @endforeach
+                </div>
             </div>
         </div>
     </div>
@@ -95,20 +107,25 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <label for="name" class="col-sm-2 col-form-label">codigo</label>
-                <input type="text" name='codigo' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('codigo')}}" id="codigo" placeholder="codigo">
-                <div class="invalid-feedback">
-                    {{ $errors->first('codigo') }}
+                <label for="codigo" class="col-sm-2 col-form-label">codigo</label>
+                <div class="col-sm-9">
+                    <input type="text" name='codigo' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('codigo')}}" id="codigo" placeholder="Código de prácticas">
+                    <div class="invalid-feedback">
+                        {{ $errors->first('codigo') }}
+                    </div>
                 </div>
             </div>
-
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
             <div class="col-sm">
-                <label for="name" class="col-sm-2 col-form-label">entidad</label>
+                <label for="entidad" class="col-sm-2 col-form-label">entidad</label>
                 <div class="col-sm-9">
                     <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
-                        <option disabled selected>Choose One!</option>
+                        <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($entidad as $entidad)
-                            <option value="{{ $entidad->id }}">{{ $entidad->name }}</option>
+                            <option value="{{ $entidad->id }}">{{ $entidad->nombre }}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -116,14 +133,17 @@
                     </div>
                 </div>
             </div>
-
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
             <div class="col-sm">
-                <label for="name" class="col-sm-2 col-form-label">formador</label>
+                <label for="formador" class="col-sm-2 col-form-label">formador</label>
                 <div class="col-sm-9">
                     <select name='formador' class="form-control {{$errors->first('formador') ? "is-invalid" : "" }} " id="formador">
-                        <option disabled selected>Choose One!</option>
+                        <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($formador as $formador)
-                            <option value="{{ $formador->id }}">{{ $formador->name }}</option>
+                            <option value="{{ $formador->id }}">{{ $formador->nombre }}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -141,30 +161,42 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <label for="name" class="col-sm-2 col-form-label">Formador Apoyo1</label>
+                <label for="formador_apoyo_1" class="col-sm-3 col-form-label">Formador Apoyo1</label>
+                <div class="col-sm-9">
                 <select name='formador_apoyo_1' class="form-control {{$errors->first('formador_apoyo_1') ? "is-invalid" : "" }} " id="formador_apoyo1">
-                    <option disabled selected>Choose One!</option>
+                    <option disabled selected>{{__('message.Choose_One')}}</option>
                     @foreach ($formadors as $formadors)
-                        <option value="{{ $formadors->id }}">{{ $formadors->name }}</option>
+                        <option value="{{ $formadors->id }}">{{ $formadors->nombre }}</option>
                     @endforeach
                 </select>
+                </div>
             </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
             <div class="col-sm">
-                <label for="name" class="col-sm-2 col-form-label">Formador Apoyo 2</label>
-                <select name='formador_apoyo_2' class="form-control {{$errors->first('formador_apoyo2') ? "is-invalid" : "" }} " id="formador_apoyo2">
-                    <option disabled selected>Choose One!</option>
-                    @foreach ($formadors2 as $formador)
-                        <option value="{{ $formador->id }}">{{ $formador->name }}</option>
-                    @endforeach
-                </select>
+                <label for="formador_apoyo_2" class="col-sm-3 col-form-label">Formador Apoyo 2</label>
+                <div class="col-sm-9">
+                    <select name='formador_apoyo_2' class="form-control {{$errors->first('formador_apoyo2') ? "is-invalid" : "" }} " id="formador_apoyo2">
+                        <option disabled selected>{{__('message.Choose_One')}}</option>
+                        @foreach ($formadors2 as $formador)
+                            <option value="{{ $formador->id }}">{{ $formador->nombre }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
             <div class="col-sm">
-                <label for="category" class="col-sm-2 col-form-label">Formador Apoyo 3</label>
+                <label for="formador_apoyo_3" class="col-sm-3 col-form-label">Formador Apoyo 3</label>
                 <div class="col-sm-9">
                     <select name='formador_apoyo_3' class="form-control {{$errors->first('formador_apoyo3') ? "is-invalid" : "" }} " id="formador_apoyo3">
-                        <option disabled selected>Choose One!</option>
+                        <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($formadors3 as $formador)
-                            <option value="{{ $formador->id }}">{{ $formador->name }}</option>
+                            <option value="{{ $formador->id }}">{{ $formador->nombre }}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -180,7 +212,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <label for="date" class="col-sm-2 col-form-label">Fecha Inicio</label>
+                <label for="fecha_inicio" class="col-sm-2 col-form-label">Fecha Inicio</label>
                 <div class="col-sm-9">
                     <input type="date" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio')}}" id="fecha_inicio" >
                     <div class="invalid-feedback">
@@ -188,21 +220,27 @@
                     </div>
                 </div>
             </div>
-
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
             <div class="col-sm">
-                <label for="name" class="col-sm-2 col-form-label">direccion</label>
-                <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion')}}" id="direccion" placeholder="Project Name">
-                <div class="invalid-feedback">
-                    {{ $errors->first('name') }}
+                <label for="direccion" class="col-sm-2 col-form-label">direccion</label>
+                <div class="col-sm-9">
+                    <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion')}}" id="direccion" placeholder="Dirección del curso">
+                    <div class="invalid-feedback">
+                        {{ $errors->first('name') }}
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
             <div class="col-sm">
-                <label for="category" class="col-sm-2 col-form-label">ciudad</label>
+                <label for="ciudad" class="col-sm-2 col-form-label">ciudad</label>
                 <div class="col-sm-9">
-                    <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad')}}" id="ciudad" placeholder="ciudad">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('ciudad') }}
-                    </div>
+                    <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad')}}" id="ciudad" placeholder="Ciudad del curso">
                     <div class="invalid-feedback">
                         {{ $errors->first('ciudad') }}
                     </div>
@@ -216,29 +254,35 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <label for="date" class="col-sm-2 col-form-label">provincia</label>
+                <label for="provincia" class="col-sm-2 col-form-label">provincia</label>
                 <div class="col-sm-9">
-                    <input type="text" name='provincia' class="form-control {{$errors->first('provincia') ? "is-invalid" : "" }} " value="{{old('provincia')}}" id="provincia" >
+                    <input type="text" name='provincia' class="form-control {{$errors->first('provincia') ? "is-invalid" : "" }} " value="{{old('provincia')}}" id="provincia" placeholder="Provincia del curso">
                     <div class="invalid-feedback">
                         {{ $errors->first('provincia') }}
                     </div>
                 </div>
             </div>
-
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
             <div class="col-sm">
-                <label for="name" class="col-sm-2 col-form-label">codigo_postal</label>
-                <input type="text" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal')}}" id="codigo_postal" placeholder="codigo_postal">
-                <div class="invalid-feedback">
-                    {{ $errors->first('codigo_postal') }}
+                <label for="codigo_postal" class="col-sm-2 col-form-label">codigo_postal</label>
+                <div class="col-sm-9">
+                    <input type="number" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal')}}" id="codigo_postal" placeholder="Código postal del curso">
+                    <div class="invalid-feedback">
+                        {{ $errors->first('codigo_postal') }}
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
             <div class="col-sm">
-                <label for="category" class="col-sm-2 col-form-label">asistentes_pdf</label>
+                <label for="asistentes_pdf" class="col-sm-2 col-form-label">asistentes_pdf</label>
                 <div class="col-sm-9">
-                    <input type="text" name='asistentes_pdf' class="form-control {{$errors->first('asistentes_pdf') ? "is-invalid" : "" }} " value="{{old('asistentes_pdf')}}" id="asistentes_pdf" placeholder="asistentes_pdf">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('asistentes_pdf') }}
-                    </div>
+                    <input type="file" name='asistentes_pdf' class="form-control {{$errors->first('asistentes_pdf') ? "is-invalid" : "" }} " value="{{old('asistentes_pdf')}}" id="asistentes_pdf" placeholder="asistentes_pdf">
                     <div class="invalid-feedback">
                         {{ $errors->first('asistentes_pdf') }}
                     </div>
@@ -251,28 +295,37 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <label for="date" class="col-sm-2 col-form-label">examen-t</label>
+                <label for="examen-t" class="col-sm-2 col-form-label">examen-t</label>
                 <div class="col-sm-9">
                     <select name='examen-t' class="form-control {{$errors->first('examen-t') ? "is-invalid" : "" }} " id="examen-t">
-                        <option disabled selected>Choose One!</option>
+                        <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($examen_t as $examen_t)
-                            <option value="{{ $examen_t->id }}">{{ $examen_t->name }}</option>
+                            <option value="{{ $examen_t->id }}">{{ $examen_t->nombre }}</option>
                         @endforeach
                     </select>
                 </div>
             </div>
-
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
             <div class="col-sm">
-                <label for="name" class="col-sm-2 col-form-label">	examen-p</label>
-                <select name='examen-p' class="form-control {{$errors->first('examen-p') ? "is-invalid" : "" }} " id="examen_p">
-                    <option disabled selected>Choose One!</option>
-                    @foreach ($examen_p as $examen_p)
-                        <option value="{{ $examen_p->id }}">{{ $examen_p->name }}</option>
-                    @endforeach
-                </select>
+                <label for="examen-p" class="col-sm-2 col-form-label">	examen-p</label>
+                <div class="col-sm-9">
+                    <select name='examen-p' class="form-control {{$errors->first('examen-p') ? "is-invalid" : "" }} " id="examen_p">
+                        <option disabled selected>{{__('message.Choose_One')}}</option>
+                        @foreach ($examen_p as $examen_p)
+                            <option value="{{ $examen_p->id }}">{{ $examen_p->nombre }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
             <div class="col-sm">
-                <label for="category" class="col-sm-2 col-form-label">	fecha_alta</label>
+                <label for="fecha_alta" class="col-sm-2 col-form-label">	fecha_alta</label>
                 <div class="col-sm-9">
                     <input type="date" name='fecha_alta' class="form-control {{$errors->first('fecha_alta') ? "is-invalid" : "" }} " value="{{old('fecha_alta')}}" id="fecha_alta" >
                     <div class="invalid-feedback">
@@ -282,35 +335,47 @@
             </div>
         </div>
     </div>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <label for="observaciones" class="col-sm-2 col-form-label">observaciones</label>
+                <div class="col-sm-9">
+                    <input type="text" name='observaciones' class="form-control {{$errors->first('observaciones') ? "is-invalid" : "" }} " value="{{old('observaciones')}}" id="observaciones" placeholder="Observaciones al curso">
+                    <div class="invalid-feedback">
+                        {{ $errors->first('observaciones') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     {{--seventh row--}}
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <label for="date" class="col-sm-2 col-form-label">publico-privado</label>
+                <label for="publico-privado" class="col-sm-2 col-form-label">publico-privado</label>
                 <div class="col-sm-9">
-                    <input type="text" name='publico-privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="{{old('publico-privado')}}" id="publico-privado" >
+
+                    <label for="publico-privado" class="col-sm-2 col-form-label">publico</label><input type="radio" name='publico-privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador de certificación">
+                    <label for="publico-privado" class="col-sm-2 col-form-label">privado</label><input type="radio" name='publico-privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador de certificación" checked="checked">
+
+{{--                    <input type="text" name='publico-privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="{{old('publico-privado')}}" id="publico-privado" >--}}
                     <div class="invalid-feedback">
                         {{ $errors->first('publico-privado') }}
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="row">
             <div class="col-sm">
-                <label for="name" class="col-sm-2 col-form-label">observaciones</label>
-                <input type="text" name='observaciones' class="form-control {{$errors->first('observaciones') ? "is-invalid" : "" }} " value="{{old('observaciones')}}" id="observaciones" placeholder="observaciones">
-                <div class="invalid-feedback">
-                    {{ $errors->first('observaciones') }}
-                </div>
-            </div>
-            <div class="col-sm">
-                <label for="category" class="col-sm-2 col-form-label">cerrado</label>
+                <label for="cerrado" class="col-sm-2 col-form-label">cerrado</label>
                 <div class="col-sm-9">
-                    <input type="text" name='cerrado' class="form-control {{$errors->first('cerrado') ? "is-invalid" : "" }} " value="{{old('cerrado')}}" id="cerrado" placeholder="cerrado">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('cerrado') }}
-                    </div>
+                    <label for="cerrado" class="col-sm-2 col-form-label">yes</label><input type="radio" name='cerrado' class="form-control {{$errors->first('cerrado') ? "is-invalid" : "" }} " value="1" id="cerrado" placeholder="Indicador de certificación">
+                    <label for="cerrado" class="col-sm-2 col-form-label">no</label><input type="radio" name='cerrado' class="form-control {{$errors->first('cerrado') ? "is-invalid" : "" }} " value="0" id="cerrado" placeholder="Indicador de certificación" checked="checked">
+
                     <div class="invalid-feedback">
                         {{ $errors->first('cerrado') }}
                     </div>
@@ -318,44 +383,47 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <label for="estado" class="col-sm-2 col-form-label">estado</label>
+                <div class="col-sm-9">
+                    <label for="estado" class="col-sm-2 col-form-label">Activo</label><input type="radio" name='estado' class="form-control {{$errors->first('estado') ? "is-invalid" : "" }} " value="1" id="estado" placeholder="Indicador de certificación">
+                    <label for="estado" class="col-sm-2 col-form-label">Inactivo</label><input type="radio" name='estado' class="form-control {{$errors->first('estado') ? "is-invalid" : "" }} " value="0" id="estado" placeholder="Indicador de certificación" checked="checked">
 
-    <label for="category" class="col-sm-2 col-form-label">estado</label>
-    <div class="col-sm-9">
-        <input type="text" name='estado' class="form-control {{$errors->first('estado') ? "is-invalid" : "" }} " value="{{old('estado')}}" id="cerrado" placeholder="estado">
-        <div class="invalid-feedback">
-            {{ $errors->first('estado') }}
-        </div>
-        <div class="invalid-feedback">
-            {{ $errors->first('estado') }}
+                    <div class="invalid-feedback">
+                        {{ $errors->first('estado') }}
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
-        <div class="form-group">
-            <div class="picture-container">
-                <div class="picture">
-                    <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>
-                    <input type="file" id="wizard-picture" name="cover" class="form-control {{$errors->first('cover') ? "is-invalid" : "" }} ">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('cover') }}
-                    </div>
-                </div>
-                <h6>Pilih Cover</h6>
-            </div>
-        </div>
-   
+{{--        <div class="form-group">--}}
+{{--            <div class="picture-container">--}}
+{{--                <div class="picture">--}}
+{{--                    <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>--}}
+{{--                    <input type="file" id="wizard-picture" name="cover" class="form-control {{$errors->first('cover') ? "is-invalid" : "" }} ">--}}
+{{--                    <div class="invalid-feedback">--}}
+{{--                        {{ $errors->first('cover') }}--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <h6>Pilih Cover</h6>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
         <div class="form-group ml-5">
-   
+
             <div class="col-sm-3">
-   
+
                 <button type="submit" class="btn btn-primary">Create</button>
-   
+
             </div>
-   
+
         </div>
 
-    </div>      
-
-  </form>
+</form>
 @endsection
 
 @push('scripts')

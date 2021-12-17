@@ -38,9 +38,13 @@ class CursosController extends Controller
         $formadors=Formadores::select('id','nombre')->get();
         $formadors2=Formadores::select('id','nombre')->get();
         $formadors3=Formadores::select('id','nombre')->get();
+        $x =Cursos::select('curso')->orderBy('id','desc')->latest()->get();
+        $course_code = $x[0]->curso +1;
+
+//        dd($course_code);
 
 //        dd($formador[0]->nombre);
-        return view('admin.cursos.create',compact('entidad','formador','tipo_maquina','tipo_curso','examen_t','examen_p','formadors','formadors2','formadors3'));
+        return view('admin.cursos.create',compact('entidad','course_code','formador','tipo_maquina','tipo_curso','examen_t','examen_p','formadors','formadors2','formadors3'));
     }
 
     /**
@@ -53,24 +57,77 @@ class CursosController extends Controller
     {
 //dd($request);
 
-        $cursos = new Cursos($request->except('_token'));
+        $cursos = new Cursos($request->except('_token','tipo_maquina'));
+//        dd($cursos);
+
+//        $cursos = new Cursos();
+
+        if(!$request->formador_apoyo_2){
+            $cursos->formador_apoyo_2 = 0;
+        }
+        $x =$request->input('tipo_maquina');
 
 
-//        $cover = $request->file('cover');
-//
-//        if($cover){
-//        $cover_path = $cover->store('images/Cursos', 'public');
-//        $cursos->cover = $cover_path;
-//        }
+
+        for( $i=0 ; $i <= count($x)-1 ;$i++ ){
+            if($i == 0){
+                $cursos->tipo_maquina_1 = $x[$i];
+//                dd($x[$i]);
+                $cursos->tipo_maquina_2 = null;
+                $cursos->tipo_maquina_3 = null;
+                $cursos->tipo_maquina_4 = null;
+            }elseif ($i == 1){
+                $cursos->tipo_maquina_2 = $x[$i];
+                $cursos->tipo_maquina_3 = null;
+                $cursos->tipo_maquina_4 = null;
+            }elseif ($i == 2){
+                $cursos->tipo_maquina_3 = $x[$i];
+                $cursos->tipo_maquina_4 = null;
+            }elseif ($i == 3){
+                $cursos->tipo_maquina_4 = $x[$i];
+            }
+
+        }
+
+
+
+//        $cursos->curso = $request->curso;
+//        $cursos->tipo_curso = $request->tipo_curso;
+//        $cursos->codigo = $request->codigo;
+//        $cursos->entidad = $request->entidad;
+//        $cursos->formador = $request->formador;
+//        $cursos->formador_apoyo_1 = $request->formador_apoyo_1;
+//        $cursos->formador_apoyo_2 = $request->formador_apoyo_2;
+//        $cursos->formador_apoyo_3 = $request->formador_apoyo_3;
+//        $cursos->fecha_inicio = $request->fecha_inicio;
+//        $cursos->direccion = $request->direccion;
+//        $cursos->ciudad = $request->ciudad;
+//        $cursos->provincia = $request->provincia;
+//        $cursos->codigo_postal = $request->codigo_postal;
+////        $cursos->examen-t = $request->examen-t;
+////        $cursos->examen-p = $request->examen-p;
+//        $cursos->fecha_alta = $request->fecha_alta;
+//        $cursos->observaciones = $request->observaciones;
+////        $cursos->publico-privado = $request->publico-privado;
+//        $cursos->cerrado = $request->cerrado;
+//        $cursos->estado = $request->estado;
+
+
+        $asistentes_pdf = $request->file('asistentes_pdf');
+
+        if($asistentes_pdf){
+        $asistentes_pdf_path = $asistentes_pdf->store('Cursos/'.$request->codigo, 'public');
+        $cursos->asistentes_pdf = $asistentes_pdf_path;
+        }
 
         if ($cursos->save()) {
 
                 return redirect()->route('admin.cursos')->with('success', 'Data added successfully');
-        
+
                } else {
-                   
+
                 return redirect()->route('admin.cursos.create')->with('error', 'Data failed to add');
-        
+
                }
     }
 
@@ -124,24 +181,24 @@ class CursosController extends Controller
         $new_cover = $request->file('cover');
 
         if($new_cover){
-        if($cursos->cover && file_exists(storage_path('app/public/' . $Cursos->cover))){
-            \Storage::delete('public/'. $Cursos->cover);
+        if($cursos->cover && file_exists(storage_path('app/public/' . $cursos->cover))){
+            \Storage::delete('public/'. $cursos->cover);
         }
 
         $new_cover_path = $new_cover->store('images/Cursos', 'public');
 
         $cursos->cover = $new_cover_path;
-    
+
         }
 
         if ($cursos->save()) {
 
                 return redirect()->route('admin.cursos')->with('success', 'Data updated successfully');
-        
+
                } else {
-                   
+
                 return redirect()->route('admin.cursos.edit')->with('error', 'Data failed to update');
-        
+
                }
     }
 

@@ -20,20 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b9c3d3c-a351-4ab6-90ca-e38cb16d2c4d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OperadoresController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OperadoresController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/formadores/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/formadores/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/operadores/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/operadores/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/operadores/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/operadores/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/operadores/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/operadores/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/css/sb-admin-2.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/css/sb-admin-2.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/entidades_formadoreas/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/entidades_formadoreas/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/entidades_formadoreas/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/entidades_formadoreas/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/entidades_formadoreas/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/entidades_formadoreas/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +190,8 @@
       <workItem from="1639486248819" duration="4311000" />
       <workItem from="1639566776408" duration="6457000" />
       <workItem from="1639641582244" duration="13584000" />
-      <workItem from="1639659409643" duration="5788000" />
+      <workItem from="1639659409643" duration="12312000" />
+      <workItem from="1639759462968" duration="9917000" />
     </task>
     <servers />
   </component>
@@ -215,6 +208,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="493" y="243" key="#Composer" timestamp="1639486283139">

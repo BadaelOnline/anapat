@@ -226,12 +226,20 @@
 
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
+<<<<<<< HEAD
+
+=======
       
+>>>>>>> 1dc7dc2aca20be5d32e4fa7c17100d88ef6dc1fa
 
           <!-- Nav Item - User Information -->
           <li class="nav-item nav-logout dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<<<<<<< HEAD
+              <span class="mr-2 d-none d-lg-inline text-gray-800 small">1</span>
+=======
               <span class="mr-2 d-none d-lg-inline text-gray-800 small">{{ auth::user()->name }}</span>
+>>>>>>> 1dc7dc2aca20be5d32e4fa7c17100d88ef6dc1fa
               <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
             </a>
             <!-- Dropdown - User Information -->
