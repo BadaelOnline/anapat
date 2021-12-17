@@ -52,14 +52,14 @@
     <form action="{{ route('admin.entidades_formadoreas.update',$entidades_formadoreas->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <div class="form-group">
+        <div class="form-groups">
 
 
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
 
                 <label for="socio" class="col-sm-2 col-form-label">socio</label>
 
-                <div class="col-sm-7">
+                <div class="col-sm-12">
 
                     <input type="number" name='socio' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->socio}}" id="name" placeholder="Código de socio">
 
@@ -71,11 +71,11 @@
 
             </div>
 
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
 
                 <label for="cif" class="col-sm-2 col-form-label">cif</label>
 
-                <div class="col-sm-7">
+                <div class="col-sm-12">
 
                     <input type="text" name='cif' class="form-control {{$errors->first('position') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->cif}}" id="position" placeholder="Código de identificación">
 
@@ -88,11 +88,11 @@
             </div>
 
 
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
 
                 <label for="nombre" class="col-sm-2 col-form-label">nombre</label>
 
-                <div class="col-sm-7">
+                <div class="col-sm-12">
 
                     <input type="text" name='nombre' class="form-control {{$errors->first('twitter') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->nombre}}" id="twitter" placeholder="Nombre comercial">
 
@@ -104,11 +104,11 @@
 
             </div>
 
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
 
                 <label for="razon_social" class="col-sm-2 col-form-label">razon_social</label>
 
-                <div class="col-sm-7">
+                <div class="col-sm-12">
 
                     <input type="text" name='razon_social' class="form-control {{$errors->first('facebook') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->razon_social}}" id="facebook" placeholder="Nombre de la empresa">
 
@@ -120,11 +120,11 @@
 
             </div>
 
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
 
                 <label for="province" class="col-sm-2 col-form-label">province</label>
 
-                <div class="col-sm-7">
+                <div class="col-sm-12">
 
                     <input type="text" name='province' class="form-control {{$errors->first('instagram') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->province}}" id="instagram" placeholder="Provincia de la sede">
 
@@ -136,11 +136,11 @@
 
             </div>
 
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
 
                 <label for="ciudad" class="col-sm-2 col-form-label">ciudad</label>
 
-                <div class="col-sm-7">
+                <div class="col-sm-12">
 
                     <input type="text" name='ciudad' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->ciudad}}" id="linkedin" placeholder="Ciudad de la sede">
 
@@ -155,11 +155,11 @@
 
 
 
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
 
                 <label for="direccion" class="col-sm-2 col-form-label">direccion</label>
 
-                <div class="col-sm-7">
+                <div class="col-sm-12">
 
                     <input type="text" name='direccion' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->direccion}}" id="linkedin" placeholder="Domicilio de la sede">
 
@@ -170,11 +170,11 @@
                 </div>
 
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
 
                 <label for="codigo_postal" class="col-sm-2 col-form-label">codigo_postal</label>
 
-                <div class="col-sm-7">
+                <div class="col-sm-12">
 
                     <input type="number" name='codigo_postal' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->codigo_postal}}" id="linkedin" placeholder="Código postal de la sede">
 
@@ -185,11 +185,11 @@
                 </div>
 
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
 
                 <label for="logo" class="col-sm-2 col-form-label">logo</label>
 
-                <div class="col-sm-7">
+                <div class="col-sm-12">
 
                     <input type="file" name='logo' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->logo}}" id="linkedin" placeholder="Link Linkedin">
 
@@ -201,11 +201,11 @@
 
             </div>
 
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
 
                 <label for="web" class="col-sm-2 col-form-label">web</label>
 
-                <div class="col-sm-7">
+                <div class="col-sm-12">
 
                     <input type="text" name='web' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->web}}" id="linkedin" placeholder="URL de la web">
 
@@ -216,11 +216,11 @@
                 </div>
 
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
 
                 <label for="mail" class="col-sm-2 col-form-label">mail</label>
 
-                <div class="col-sm-7">
+                <div class="col-sm-12">
 
                     <input type="text" name='mail' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->mail}}" id="linkedin" placeholder="Correo electrónico">
 
@@ -231,11 +231,11 @@
                 </div>
 
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
 
                 <label for="doc_medios_pdf" class="col-sm-2 col-form-label">doc_medios_pdf</label>
 
-                <div class="col-sm-7">
+                <div class="col-sm-12">
 
                     <input type="file" name='doc_medios_pdf' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->doc_medios_pdf}}" id="linkedin" placeholder="Link Linkedin">
 
@@ -245,11 +245,11 @@
 
                 </div>
 
-            </div><div class="form-group ml-5">
+            </div><div class="form-group col-md-4">
 
                 <label for="fecha" class="col-sm-2 col-form-label">fecha</label>
 
-                <div class="col-sm-7">
+                <div class="col-sm-12">
 
                     <input type="date" name='fecha' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->fecha}}" id="linkedin" placeholder="Fecha de alta">
 
@@ -259,30 +259,14 @@
 
                 </div>
 
-            </div><div class="form-group ml-5">
+            </div><div class="form-group col-md-4">
 
-                <label for="estado" class="col-sm-2 col-form-label">estado</label>
+                <label for="estado" class="col-sm-12 col-form-label text-center">estado</label>
 
-                <div class="col-sm-7">
+                <div class="col-sm-12 text-center">
 
-                    <label for="estado" class="col-sm-2 col-form-label">yes</label> <input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador: Activa/Inactiva">
-                    <label for="estado" class="col-sm-2 col-form-label">no</label> <input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador: Activa/Inactiva" checked="checked">
-
-                    <div class="invalid-feedback">
-                        {{ $errors->first('linkedin') }}
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="form-group ml-5">
-
-                <label for="certificado" class="col-sm-2 col-form-label">certificado</label>
-
-                <div class="col-sm-7">
-
-                    <label for="certificado" class="col-sm-2 col-form-label">yes</label><input type="radio" name='certificado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador de certificación">
-                    <label for="certificado" class="col-sm-2 col-form-label">no</label><input type="radio" name='certificado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador de certificación" checked="checked">
+                    <label for="estado" class="col-sm-5 col-form-label">yes <input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador: Activa/Inactiva"></label> 
+                    <label for="estado" class="col-sm-5 col-form-label">no <input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador: Activa/Inactiva" checked="checked"></label> 
 
                     <div class="invalid-feedback">
                         {{ $errors->first('linkedin') }}
@@ -291,7 +275,23 @@
                 </div>
 
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
+
+                <label for="certificado" class="col-sm-12 col-form-label text-center">certificado</label>
+
+                <div class="col-sm-12 text-center">
+
+                    <label for="certificado" class="col-sm-5 col-form-label">yes <input type="radio" name='certificado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador de certificación"></label>
+                    <label for="certificado" class="col-sm-5 col-form-label">no <input type="radio" name='certificado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador de certificación" checked="checked"></label>
+
+                    <div class="invalid-feedback">
+                        {{ $errors->first('linkedin') }}
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="form-group col-md-12">
                 <div class="col-sm-3">
                     <button type="submit" class="btn btn-primary">Editar</button>
                 </div>
