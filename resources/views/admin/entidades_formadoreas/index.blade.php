@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.entidades_formadoreas.create') }}" class="btn btn-success">Create entidadesFormadores</a>
+        <a href="{{ route('admin.entidades_formadoreas.create') }}" class="btn btn-info">Create entidadesFormadores</a>
 
     </div>
 
@@ -36,15 +36,15 @@
 
         <div class="table-responsive">
 
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table" id="dataTable" width="100%" cellspacing="0">
 
                 <thead>
 
                     <tr>
-
+                        <th>Logo</th>
                         <th>CIF.</th>
 
-                        <th>Logo</th>
+                       
 
                         <th>Nombre</th>
 
@@ -67,14 +67,14 @@
                 @foreach ($entidadesFormadores as $entidadesFormadores)
 
                     <tr>
-
-                        <td>{{ $entidadesFormadores->cif }}</td>
-
-                        <td>
-
-                            <img src="{{asset('storage/' . $entidadesFormadores->logo)}}" width="96px"/>
+                    <td>
+                        
+                        <img src="{{asset('storage/' . $entidadesFormadores->logo)}}" width="96px"/>
 
                         </td>
+                        <td>{{ $entidadesFormadores->cif }}</td>
+
+                     
 
                         <td>{{ $entidadesFormadores->nombre }}</td>
 
@@ -82,7 +82,7 @@
 
                         <td>
 
-                            <a href="{{route('admin.entidades_formadoreas.edit', [$entidadesFormadores->id])}}" class="btn btn-info btn-sm"> Edit </a>
+                            <a href="{{route('admin.entidades_formadoreas.edit', [$entidadesFormadores->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-edit"></i> </a>
 
                             <form method="POST" action="{{route('admin.entidades_formadoreas.destroy', [$entidadesFormadores->id])}}" class="d-inline" onsubmit="return confirm('Delete this $entidadesFormadores permanently?')">
 
@@ -90,8 +90,9 @@
 
                                 <input type="hidden" name="_method" value="DELETE">
 
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-
+                                <button type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                <i class='fas fa-trash-alt'></i> 
+                                </button>
                             </form>
 
                         </td>

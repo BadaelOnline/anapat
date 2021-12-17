@@ -49,12 +49,14 @@
     <!-- Nav Item - Dashboard -->
     <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.dashboard',
-        ])? 'active' : ''}}">
+        ])? 'active' : ''}}" style="margin-inline-start: 10px;">
       <a class="nav-link" href="{{ route('admin.dashboard') }}">
         <span>  <i class="fas fa-fw fa-tachometer-alt"></i>Dashboard</span></a>
     </li>
 
-      <li class="nav-item">
+      <li class="nav-item {{ in_array(Route::currentRouteName(),[
+            'admin.user',
+        ])? 'active' : ''}}">
         <a class="nav-link" href="{{ route('admin.user') }}">
           <i class="fas fa-fw fa-table"></i>
           <span>Admin</span></a>
@@ -197,15 +199,14 @@
 
 
       <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
 
     <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-inline">
+    <div class="text-center d-inline circle-button">
       <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
   </ul>
-  <div class="show" id="show"><i class="fas fa-fw fa-arrow-right"></i></div>
+  <div class="showw" id="showw"><i class="fas fa-fw fa-arrow-right"></i></div>
 
   <!-- End of Sidebar -->
 
@@ -225,12 +226,12 @@
 
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
-          <div class="topbar-divider d-none d-sm-block"></div>
+
 
           <!-- Nav Item - User Information -->
-          <li class="nav-item dropdown no-arrow">
+          <li class="nav-item nav-logout dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="mr-2 d-none d-lg-inline text-gray-600 small">1</span>
+              <span class="mr-2 d-none d-lg-inline text-gray-800 small">1</span>
               <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
             </a>
             <!-- Dropdown - User Information -->
@@ -335,8 +336,8 @@
         });
     });
 
-    $("#show").click(function(){
-        $("#show").toggleClass("show-button");
+    $("#showw").click(function(){
+        $("#showw").toggleClass("show-button");
         $("#accordionSidebar").toggleClass("show-list");
     });
 
