@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.asistent.create') }}" class="btn btn-success">Create asistent</a>
+{{--        <a href="{{ route('admin.asistent.create',1) }}" class="btn btn-success">Create asistent</a>--}}
 
     </div>
 

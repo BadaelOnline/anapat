@@ -56,12 +56,13 @@
             <div class="col-sm">
                 <label for="curso" class="col-sm-2 col-form-label">curso</label>
                 <div class="col-sm-9">
-                    <select name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
+                    <select disabled name='test' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
                         <option disabled selected>Choose One!</option>
                         @foreach ($curso as $curso)
-                            <option value="{{ $curso->id }}">{{ $curso->codigo }}</option>
+                            <option value="{{ $curso->id }}" {{$id == $curso->id ? "selected" : ""}}>{{ $curso->codigo }}</option>
                         @endforeach
                     </select>
+                    <input type="hidden" name="curso" value="{{$id}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('curso') }}
                     </div>

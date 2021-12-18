@@ -28,7 +28,7 @@ class AsistentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         $curso=Cursos::select('id','codigo')->get();
         $operador=Operadores::select('id','nombre')->get();
@@ -36,7 +36,7 @@ class AsistentController extends Controller
         $tipo=Practica::select('id','practica')->get();
 
 //        dd($formador[0]->nombre);
-        return view('admin.asistent.create',compact('curso','operador','tipo_carnet','tipo'));
+        return view('admin.asistent.create',compact('curso','id','operador','tipo_carnet','tipo'));
     }
 
     /**
@@ -75,12 +75,25 @@ class AsistentController extends Controller
 //        $cover_path = $cover->store('images/Asistent', 'public');
 //        $Asistent->cover = $cover_path;
 //        }
+        $cursos = Cursos::findOrFail($request->curso);
+        $entidad=EntidadesFormadoreas::select('id','nombre')->get();
+        $formador=Formadores::select('id','nombre')->get();
+        $tipo_maquina=Tipo_Maquina::select('id','tipo_maquina')->get();
+        $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
+        $examen_t=Examen::select('id','nombre')->where('tipo',1)->get();
+        $examen_p=Examen::select('id','nombre')->where('tipo',2)->get();
+        $formadors=Formadores::select('id','nombre')->get();
+        $formadors2=Formadores::select('id','nombre')->get();
+        $formadors3=Formadores::select('id','nombre')->get();
 
         if ($asistent->save()) {
+//            dd($asistent);
 
-                return redirect()->route('admin.asistent')->with('success', 'Data added successfully');
 
-               } else {
+
+            return redirect()->route('admin.cursos.edit',$cursos->id)->with('cursos','entidad','formador','tipo_maquina','tipo_curso','examen_t','examen_p','formadors','formadors2','formadors3');
+
+        } else {
 
                 return redirect()->route('admin.asistent.create')->with('error', 'Data failed to add');
 

@@ -20,12 +20,12 @@
     <div class="form-group ml-2">
         <label for="curso" class="col-sm-2 col-form-label">Curso</label>
         <div class="col-sm-9">
-            <select name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
-                <option disabled selected>{{__('message.Choose_One')}}</option>
+            <select name='test' disabled class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
                 @foreach ($curso as $curso)
-                    <option value="{{ $curso->id }}">{{ $curso->curso }}</option>
+                    <option value="{{ $curso->id }}" {{$id == $curso->id ? "selected" : ""}}>{{ $curso->curso }}</option>
                 @endforeach
             </select>
+            <input type="hidden" name="curso" value="{{$id}}">
             <div class="invalid-feedback">
                 {{ $errors->first('curso') }}
             </div>
@@ -74,7 +74,7 @@
         </div>
         <label for="date" class="col-sm-2 col-form-label">	final</label>
         <div class="col-sm-9">
-            <input type="date" name='final' class="form-control {{$errors->first('final') ? "is-invalid" : "" }} " value="{{old('final')}}" id="final" >
+            <input type="datetime-local" name='final' class="form-control {{$errors->first('final') ? "is-invalid" : "" }} " value="{{old('final')}}" id="final" >
             <div class="invalid-feedback">
                 {{ $errors->first('	final') }}
             </div>
