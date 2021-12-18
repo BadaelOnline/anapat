@@ -471,15 +471,15 @@
 
                                             <a href="{{route('admin.asistent.edit', [$asistent->id])}}" class="btn btn-info btn-sm"> Edit </a>
 
-{{--                                            <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('Delete this asistent permanently?')">--}}
+                                            {{--                                            <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('Delete this asistent permanently?')">--}}
 
-{{--                                                @csrf--}}
+                                            {{--                                                @csrf--}}
 
-{{--                                                <input type="hidden" name="_method" value="DELETE">--}}
+                                            {{--                                                <input type="hidden" name="_method" value="DELETE">--}}
 
-{{--                                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">--}}
+                                            {{--                                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">--}}
 
-{{--                                            </form>--}}
+                                            {{--                                            </form>--}}
 
                                         </td>
 

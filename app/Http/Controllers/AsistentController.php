@@ -95,9 +95,9 @@ class AsistentController extends Controller
 
         } else {
 
-                return redirect()->route('admin.asistent.create')->with('error', 'Data failed to add');
+            return redirect()->route('admin.asistent.create')->with('error', 'Data failed to add');
 
-               }
+        }
     }
 
     /**
@@ -161,13 +161,13 @@ class AsistentController extends Controller
         $examen_t_pdf = $request->file('examen_t_pdf');
 
         if($examen_t_pdf){
-        if($asistent->examen_t_pdf && file_exists(storage_path('app/public/' . $asistent->examen_t_pdf))){
-            \Storage::delete('public/'. $asistent->examen_t_pdf);
-        }
+            if($asistent->examen_t_pdf && file_exists(storage_path('app/public/' . $asistent->examen_t_pdf))){
+                \Storage::delete('public/'. $asistent->examen_t_pdf);
+            }
 
             $examen_t_pdf_path = $examen_t_pdf->store('images/asistent', 'public');
 
-        $asistent->examen_t_pdf = $examen_t_pdf_path;
+            $asistent->examen_t_pdf = $examen_t_pdf_path;
 
         }
         $examen_p_pdf = $request->file('examen_t_pdf');
@@ -186,13 +186,13 @@ class AsistentController extends Controller
 
         if ($asistent->save()) {
 
-                return redirect()->route('admin.asistent')->with('success', 'Data updated successfully');
+            return redirect()->route('admin.asistent')->with('success', 'Data updated successfully');
 
-               } else {
+        } else {
 
-                return redirect()->route('admin.asistent.edit')->with('error', 'Data failed to update');
+            return redirect()->route('admin.asistent.edit')->with('error', 'Data failed to update');
 
-               }
+        }
     }
 
     /**

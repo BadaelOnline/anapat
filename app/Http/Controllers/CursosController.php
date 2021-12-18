@@ -126,19 +126,19 @@ class CursosController extends Controller
         $asistentes_pdf = $request->file('asistentes_pdf');
 
         if($asistentes_pdf){
-        $asistentes_pdf_path = $asistentes_pdf->store('Cursos/'.$request->codigo, 'public');
-        $cursos->asistentes_pdf = $asistentes_pdf_path;
+            $asistentes_pdf_path = $asistentes_pdf->store('Cursos/'.$request->codigo, 'public');
+            $cursos->asistentes_pdf = $asistentes_pdf_path;
         }
 
         if ($cursos->save()) {
 
-                return redirect()->route('admin.cursos')->with('success', 'Data added successfully');
+            return redirect()->route('admin.cursos')->with('success', 'Data added successfully');
 
-               } else {
+        } else {
 
-                return redirect()->route('admin.cursos.create')->with('error', 'Data failed to add');
+            return redirect()->route('admin.cursos.create')->with('error', 'Data failed to add');
 
-               }
+        }
     }
 
     /**
@@ -242,25 +242,25 @@ class CursosController extends Controller
         $asistentes_pdf = $request->file('asistentes_pdf');
 
         if($asistentes_pdf){
-        if($cursos->asistentes_pdf && file_exists(storage_path('app/public/' . $cursos->asistentes_pdf))){
-            \Storage::delete('public/'. $cursos->asistentes_pdf);
-        }
+            if($cursos->asistentes_pdf && file_exists(storage_path('app/public/' . $cursos->asistentes_pdf))){
+                \Storage::delete('public/'. $cursos->asistentes_pdf);
+            }
 
             $asistentes_pdf_path = $asistentes_pdf->store('images/Cursos', 'public');
 
-        $cursos->asistentes_pdf = $asistentes_pdf_path;
+            $cursos->asistentes_pdf = $asistentes_pdf_path;
 
         }
 
         if ($cursos->save()) {
 
-                return redirect()->route('admin.cursos')->with('success', 'Data updated successfully');
+            return redirect()->route('admin.cursos')->with('success', 'Data updated successfully');
 
-               } else {
+        } else {
 
-                return redirect()->route('admin.cursos.edit')->with('error', 'Data failed to update');
+            return redirect()->route('admin.cursos.edit')->with('error', 'Data failed to update');
 
-               }
+        }
     }
 
     /**

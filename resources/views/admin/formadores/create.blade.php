@@ -36,6 +36,7 @@ Name">
                 {{--</div>--}}
             {{--</div>--}}
         {{--</div>--}}
+        @can('isAdmin')
         <div class="form-group ml-5">
             <label for="entidad" class="col-sm-2 col-form-label">Entidad</label>
             <div class="col-sm-9">
@@ -50,17 +51,29 @@ Name">
                 </div>
             </div>
         </div>
+        @endcan
+
+        @can('isResponsableOrFormador')
+        <div class="form-group ml-5">
+            <div class="col-sm-9">
+                <input type="hidden" placeholder="{{ $entidad[0]->nombre}}" name="entidad" id="entidad" cols="40" rows="10" value="{{ $entidad[0]->id}}"  class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} ">{{old('entidad0')}}</input>
+                <div class="invalid-feedback">
+                    {{ $errors->first('entidad') }}
+                </div>
+            </div>
+        </div>
+        @endcan
+
         <div class="form-group ml-5">
             <label for="apellidos" class="col-sm-2 col-form-label">Apellidos </label>
             <div class="col-sm-9">
-                {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
-
                 <input type="text" placeholder="Apellidos del Formador Name" name="apellidos" id="apellidos" cols="40" rows="10"  class="form-control {{$errors->first('apellidos') ? "is-invalid" : "" }} ">{{old('apellidos')}}</input>
                 <div class="invalid-feedback">
                     {{ $errors->first('apellidos') }}
                 </div>
             </div>
         </div>
+
         <div class="form-group ml-5">
             <label for="nombre" class="col-sm-2 col-form-label">Nombre </label>
             <div class="col-sm-9">
@@ -161,7 +174,7 @@ Name">
             </div>
         </div>
         <div class="form-group ml-5">
-            <label for="fecha" class="col-sm-2 col-form-label">	Fecha</label>
+            <label for="fecha" class="col-sm-2 col-form-label">Fecha</label>
             <div class="col-sm-9">
                 {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -172,7 +185,7 @@ Name">
             </div>
         </div>
         <div class="form-group ml-5">
-            <label for="estado" class="col-sm-2 col-form-label">	Estado</label>
+            <label for="estado" class="col-sm-2 col-form-label">Estado</label>
             <div class="col-sm-9">
                 {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
