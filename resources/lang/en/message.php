@@ -14,6 +14,8 @@ return [
     */
 
     'Choose_One' => '¡Elige uno!',
+    'add_new' => 'Añadir nueva',
+    'edit' => 'Editar',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'Dashboard' => 'Dashboard',

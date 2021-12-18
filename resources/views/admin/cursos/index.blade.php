@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.cursos.create') }}" class="btn btn-success">Create cursos</a>
+        <a href="{{ route('admin.cursos.create') }}" class="btn btn-success">{{__('message.add_new')}}</a>
 
     </div>
 
@@ -51,6 +51,8 @@
                         <th>direccion</th>
 
                         <th>Option</th>
+
+
 
                     </tr>
 
@@ -92,6 +94,9 @@
                                 <input type="submit" value="Delete" class="btn btn-danger btn-sm">
 
                             </form>
+{{--                            <a href="{{route('admin.cursos.activo', [$cursos->id])}}" class="btn btn-info btn-sm"> Activo </a>--}}
+
+
 
                         </td>
 

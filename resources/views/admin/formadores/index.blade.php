@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.formadores.create') }}" class="btn btn-success">Create formadores</a>
+        <a href="{{ route('admin.formadores.create') }}" class="btn btn-success">{{__('message.add_new')}} formadores</a>
 
     </div>
 

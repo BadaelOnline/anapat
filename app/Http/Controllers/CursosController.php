@@ -24,7 +24,19 @@ class CursosController extends Controller
      */
     public function index()
     {
-        $cursos = Cursos::orderBy('id','desc')->get();
+        $cursos = Cursos::orderBy('id','desc')->where('estado',1)->get();
+
+        return view('admin.cursos.index',compact('cursos'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index2()
+    {
+        $cursos = Cursos::orderBy('id','desc')->where('estado',0)->get();
 
         return view('admin.cursos.index',compact('cursos'));
     }
@@ -273,6 +285,22 @@ class CursosController extends Controller
     {
         $cursos = cursos::findOrFail($id);
         $cursos->delete();
+
+        return redirect()->route('admin.cursos')->with('success', 'Data deleted successfully');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function activo($id)
+    {
+        $cursos = cursos::findOrFail($id);
+        $cursos->estado = 1;
+//        $cursos->delete();
+        $cursos->save();
 
         return redirect()->route('admin.cursos')->with('success', 'Data deleted successfully');
     }
