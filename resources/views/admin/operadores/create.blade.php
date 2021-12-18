@@ -36,6 +36,16 @@
   width: 100%;
   height: 100%;
 }
+input[type="radio"] {
+    cursor: pointer;
+}
+input[type="radio"]:focus {
+    color: #495057;
+    background-color: #0477b1;
+    border-color: transparent;
+    outline: 0;
+    box-shadow: none;
+}
 </style>
 
 @endsection
@@ -51,12 +61,12 @@
 <form action="{{ route('admin.operadores.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
-    <div class="form-group">
+    <div class="form-groups">
 
 
-    <div class="form-group ml-5">
+    <div class="form-group col-md-4">
 
-        <label for="dni" class="col-sm-2 col-form-label">Dni</label>
+        <label for="dni" class="col-sm-12 col-form-label">Dni</label>
 
         <div class="col-sm-7">
             <input type="text" name='dni' class="form-control {{$errors->first('dni') ? "is-invalid" : "" }} " value="{{old('dni')}}" id="dni" placeholder="Documento identificativo">
@@ -66,8 +76,8 @@
         </div>
     </div>
 
-    <div class="form-group ml-5">
-        <label for="apellidos" class="col-sm-2 col-form-label">Apellidos</label>
+    <div class="form-group col-md-4">
+        <label for="apellidos" class="col-sm-12 col-form-label">Apellidos</label>
         <div class="col-sm-7">
             <input type="text" name='apellidos' class="form-control {{$errors->first('apellidos') ? "is-invalid" : "" }} " value="{{old('apellidos')}}" id="apellidos" placeholder="Apellidos">
             <div class="invalid-feedback">
@@ -77,8 +87,8 @@
     </div>
 
 
-    <div class="form-group ml-5">
-        <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+    <div class="form-group col-md-4">
+        <label for="nombre" class="col-sm-12 col-form-label">Nombre</label>
         <div class="col-sm-7">
             <input type="text" name='nombre' class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} " value="{{old('nombre')}}" id="twitter" placeholder="Nombre ">
             <div class="invalid-feedback">
@@ -87,8 +97,8 @@
         </div>
     </div>
 
-        <div class="form-group ml-5">
-            <label for="entidad" class="col-sm-2 col-form-label">Entidad</label>
+        <div class="form-group col-md-4">
+            <label for="entidad" class="col-sm-12 col-form-label">Entidad</label>
             <div class="col-sm-9">
                 <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
                     <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -102,8 +112,8 @@
             </div>
         </div>
 
-    <div class="form-group ml-5">
-        <label for="foto" class="col-sm-2 col-form-label">Foto</label>
+    <div class="form-group col-md-4">
+        <label for="foto" class="col-sm-12 col-form-label">Foto</label>
         <div class="col-sm-7">
             <input type="file" name='foto' class="form-control {{$errors->first('foto') ? "is-invalid" : "" }} " value="{{old('foto')}}" id="foto" placeholder="foto">
             <div class="invalid-feedback">
@@ -112,8 +122,8 @@
         </div>
     </div>
 
-    <div class="form-group ml-5">
-        <label for="dni_img" class="col-sm-2 col-form-label">Dni Img</label>
+    <div class="form-group col-md-4">
+        <label for="dni_img" class="col-sm-12 col-form-label">Dni Img</label>
         <div class="col-sm-7">
             <input type="file" name='dni_img' class="form-control {{$errors->first('dni_img') ? "is-invalid" : "" }} " value="{{old('dni_img')}}" id="dni_img" placeholder="dni_img">
             <div class="invalid-feedback">
@@ -122,8 +132,8 @@
         </div>
     </div>
 
-    <div class="form-group ml-5">
-        <label for="fecha_nacimiento" class="col-sm-2 col-form-label">Fecha Nacimiento</label>
+    <div class="form-group col-md-4">
+        <label for="fecha_nacimiento" class="col-sm-12 col-form-label">Fecha Nacimiento</label>
         <div class="col-sm-7">
             <input type="date" name='fecha_nacimiento' class="form-control {{$errors->first('fecha_nacimiento') ? "is-invalid" : "" }} " value="{{old('fecha_nacimiento')}}" id="fecha_nacimiento" placeholder="fecha nacimiento">
             <div class="invalid-feedback">
@@ -131,8 +141,8 @@
             </div>
         </div>
     </div>
-        <div class="form-group ml-5">
-            <label for="provincia" class="col-sm-2 col-form-label">Provincia</label>
+        <div class="form-group col-md-4">
+            <label for="provincia" class="col-sm-12 col-form-label">Provincia</label>
             <div class="col-sm-7">
                 <input type="text" name='provincia' class="form-control {{$errors->first('provincia') ? "is-invalid" : "" }} " value="{{old('provincia')}}" id="provincia" placeholder="Provincia">
                 <div class="invalid-feedback">
@@ -140,8 +150,8 @@
                 </div>
             </div>
         </div>
-        <div class="form-group ml-5">
-            <label for="ciudad" class="col-sm-2 col-form-label">Ciudad</label>
+        <div class="form-group col-md-4">
+            <label for="ciudad" class="col-sm-12 col-form-label">Ciudad</label>
             <div class="col-sm-7">
                 <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad')}}" id="ciudad" placeholder="Ciudad">
                 <div class="invalid-feedback">
@@ -150,8 +160,8 @@
             </div>
         </div>
 
-        <div class="form-group ml-5">
-            <label for="direccion" class="col-sm-2 col-form-label">direccion</label>
+        <div class="form-group col-md-4">
+            <label for="direccion" class="col-sm-12 col-form-label">direccion</label>
             <div class="col-sm-7">
                 <input type="text" name='direccion' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Dirección del formador">
                 <div class="invalid-feedback">
@@ -160,8 +170,8 @@
             </div>
         </div>
 
-        <div class="form-group ml-5">
-            <label for="codigo_postal" class="col-sm-2 col-form-label">Codigo Postal</label>
+        <div class="form-group col-md-4">
+            <label for="codigo_postal" class="col-sm-12 col-form-label">Codigo Postal</label>
             <div class="col-sm-7">
                 <input type="number" name='codigo_postal' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Código postal">
                 <div class="invalid-feedback">
@@ -171,8 +181,8 @@
         </div>
 
 
-        <div class="form-group ml-5">
-            <label for="mail" class="col-sm-2 col-form-label">mail</label>
+        <div class="form-group col-md-4">
+            <label for="mail" class="col-sm-12 col-form-label">mail</label>
             <div class="col-sm-7">
                 <input type="text" name='mail' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Cuenta de correo">
                 <div class="invalid-feedback">
@@ -181,8 +191,8 @@
             </div>
         </div>
 
-        <div class="form-group ml-5">
-            <label for="carnet" class="col-sm-2 col-form-label">Carnet</label>
+        <div class="form-group col-md-4">
+            <label for="carnet" class="col-sm-12 col-form-label">Carnet</label>
             <div class="col-sm-7">
                 <input type="text" name='carnet' class="form-control {{$errors->first('carnet') ? "is-invalid" : "" }} " value="{{old('carnet')}}" id="carnet" placeholder="Número de carné">
                 <div class="invalid-feedback">
@@ -190,29 +200,29 @@
                 </div>
             </div>
         </div>
-        </div><div class="form-group ml-5">
-            <label for="fecha" class="col-sm-2 col-form-label">fecha</label>
+       <div class="form-group col-md-4">
+            <label for="fecha" class="col-sm-12 col-form-label">fecha</label>
             <div class="col-sm-7">
                 <input type="date" name='fecha' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Fecha de alta">
                 <div class="invalid-feedback">
                     {{ $errors->first('linkedin') }}
                 </div>
             </div>
-        </div><div class="form-group ml-5">
-            <label for="estado" class="col-sm-2 col-form-label">Estado</label>
-            <div class="col-sm-7">
-                <label for="estado" class="col-sm-2 col-form-label">yes</label> <input type="radio" name='estado' class="form-control {{$errors->first('estado') ? "is-invalid" : "" }} " value="1" id="estado" placeholder="Indicador: Activa/Inactiva">
-                <label for="estado" class="col-sm-2 col-form-label">no</label> <input type="radio" name='estado' class="form-control {{$errors->first('estado') ? "is-invalid" : "" }} " value="0" id="estado" placeholder="Indicador: Activa/Inactiva" checked="checked">
+        </div><div class="form-group col-md-4">
+            <label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
+            <div class="col-sm-12 text-center">
+                <label for="estado" class="col-sm-2 col-form-label">yes  <input type="radio" name='estado' class="form-control {{$errors->first('estado') ? "is-invalid" : "" }} " value="1" id="estado" placeholder="Indicador: Activa/Inactiva"></label>
+                <label for="estado" class="col-sm-2 col-form-label">no <input type="radio" name='estado' class="form-control {{$errors->first('estado') ? "is-invalid" : "" }} " value="0" id="estado" placeholder="Indicador: Activa/Inactiva" checked="checked"></label> 
                 <div class="invalid-feedback">
                     {{ $errors->first('linkedin') }}
                 </div>
             </div>
         </div>
-
         </div>
-      <div class="form-group ml-5">
+        </div>
+      <div class="form-group col-md-4">
         <div class="col-sm-3">
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-info">Create</button>
           </div>
       </div>
     </div>

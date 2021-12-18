@@ -51,7 +51,8 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <a href="/" class="logo "><img src="http://anapat.e-dalely.com/wp-content/uploads/2021/11/cropped-anpat-removebg-preview-1-207x97-1-180x84.png" alt="" class="img-fluid"></a>
+      <a href="/" class="logo ">
+        <img src="{{ asset('admin/img/logo-anpat.png')}}" alt="" class="img-fluid"></a>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
@@ -141,7 +142,7 @@
             </ul>
           </div>
           <div class="col-lg-3 col-md-6 footer-links">
-         <img src="http://anapat.e-dalely.com/wp-content/uploads/2021/11/cropped-anpat-removebg-preview-1-207x97-1-180x84.png" alt="">
+         <img src="{{ asset('admin/img/logo-anpat.png')}}" alt="">
           </div>
         </div>
       </div>

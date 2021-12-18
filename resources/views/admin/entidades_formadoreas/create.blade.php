@@ -36,6 +36,16 @@
   width: 100%;
   height: 100%;
 }
+input[type="radio"] {
+    cursor: pointer;
+}
+input[type="radio"]:focus {
+    color: #495057;
+    background-color: #0477b1;
+    border-color: transparent;
+    outline: 0;
+    box-shadow: none;
+}
 </style>
 
 @endsection
@@ -266,8 +276,8 @@
 
             <div class="col-sm-12 text-center">
 
-                <label for="estado" class="col-sm-5 col-form-label">yes <input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador: Activa/Inactiva"></label>
-                <label for="estado" class="col-sm-5 col-form-label">no <input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador: Activa/Inactiva" checked="checked"></label> 
+                <label for="estado" class="col-sm-2 col-form-label">yes <input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador: Activa/Inactiva"></label>
+                <label for="estado" class="col-sm-2 col-form-label">no <input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador: Activa/Inactiva" checked="checked"></label> 
 
                 <div class="invalid-feedback">
                     {{ $errors->first('linkedin') }}
@@ -282,8 +292,8 @@
 
             <div class="col-sm-12 text-center">
 
-                <label for="certificado" class="col-sm-5 col-form-label">yes <input type="radio" name='certificado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador de certificación"></label>
-                <label for="certificado" class="col-sm-5 col-form-label">no <input type="radio" name='certificado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador de certificación" checked="checked"></label>
+                <label for="certificado" class="col-sm-2 col-form-label">yes <input type="radio" name='certificado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador de certificación"></label>
+                <label for="certificado" class="col-sm-2 col-form-label">no <input type="radio" name='certificado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador de certificación" checked="checked"></label>
 
                 <div class="invalid-feedback">
                     {{ $errors->first('linkedin') }}
@@ -295,7 +305,7 @@
         
       <div class="form-group  col-sm-12">
         <div class="col-sm-3">
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-info">Create</button>
           </div>
       </div>
     </div>

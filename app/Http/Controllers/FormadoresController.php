@@ -16,8 +16,11 @@ class FormadoresController extends Controller
      */
     public function index()
     {
-        $formadores = Formadores::orderBy('id','desc')->get();
-
+        $user = auth()->user();
+        if($user->perfil=='Responsable_de_Formacion' || $user->perfil=='Formador')
+        $formadores = Formadores::orderBy('id','desc')->where('entidad','=',$user->entidad)->get();
+        else
+            $formadores = Formadores::orderBy('id','desc')->get();
         return view('admin.formadores.index',compact('formadores'));
     }
 
@@ -28,7 +31,10 @@ class FormadoresController extends Controller
      */
     public function create()
     {
-        $entidad=EntidadesFormadoreas::select('id','nombre')->get();
+        $user = auth()->user();
+        if($user->perfil=='Responsable_de_Formacion' || $user->perfil=='Formador')
+        $entidad=EntidadesFormadoreas::select('id','nombre')->where('id','=',$user->entidad)->get();
+        else $entidad=EntidadesFormadoreas::select('id','nombre')->get();
         return view('admin.formadores.create',compact('entidad'));
 
     }

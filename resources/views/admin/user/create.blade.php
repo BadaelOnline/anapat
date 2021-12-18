@@ -50,9 +50,9 @@
 <form action="{{ route('admin.user.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
-    <div class="container">
+    <div class="form-groups">
 
-        <div class="form-group ml-5">
+        <div class="form-group col-md-4 ">
 
             <label for="name" class="col-sm-2 col-form-label">Name</label>
 
@@ -68,7 +68,7 @@
 
         </div>
 
-          <div class="form-group ml-5">
+          <div class="form-group col-md-4 ">
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-9">
                 <input type="email" name='email' class="form-control {{$errors->first('email') ? "is-invalid" : "" }} " value="{{old('email')}}" id="email" placeholder="Email">
@@ -78,7 +78,7 @@
             </div>
         </div>
 
-        <div class="form-group ml-5">
+        <div class="form-group col-md-4 ">
             <label for="email" class="col-sm-2 col-form-label">Role</label>
             <div class="col-sm-9">
                 <input type="text" name='role' class="form-control {{$errors->first('role') ? "is-invalid" : "" }} " value="{{old('role')}}" id="role" placeholder="Role">
@@ -88,7 +88,7 @@
             </div>
         </div>
 
-         <div class="form-group ml-5">
+         <div class="form-group col-md-4 ">
             <label for="password" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-9">
                 <input type="password" name='password' class="form-control {{$errors->first('password') ? "is-invalid" : "" }} " value="{{old('password')}}" id="password" placeholder="Password">
@@ -98,11 +98,11 @@
             </div>
         </div>
    
-        <div class="form-group ml-5">
+        <div class="form-group col-md-12 ">
    
             <div class="col-sm-3">
    
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-info">Create</button>
    
             </div>
    

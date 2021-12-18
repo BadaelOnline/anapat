@@ -37,12 +37,12 @@
                 {{ $errors->first('name') }}    
             </div> 
             </div>
-            <button type="submit" class="btn btn-primary mb-2">Tambah Category</button>
+            <button type="submit" class="btn btn-success mb-2">Tambah Category</button>
           </form>
 
     </div>
 
-    <div class="card-body col-md-4">
+    <div class="card-body col-md-12">
 
         <div class="table-responsive">
 
@@ -80,7 +80,7 @@
                 
                         <td>    
                 
-                            <a href="{{route('admin.pcategory.edit', [$pcategory->id])}}" class="btn btn-info btn-sm"> Edit </a>
+                            <a href="{{route('admin.pcategory.edit', [$pcategory->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-edit"></i> </a>
                 
                             <form method="POST" action="{{route('admin.pcategory.destroy', [$pcategory->id])}}" class="d-inline" onsubmit="return confirm('Delete this pcategory permanently?')">
                 
@@ -88,7 +88,9 @@
                 
                                 <input type="hidden" name="_method" value="DELETE">
                 
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                <button type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                <i class='fas fa-trash-alt'></i> 
+                                </button>
                 
                             </form>
                 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
+    private $s=['Responsable','Admin'];
     /**
      * The policy mappings for the application.
      *
@@ -29,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('isAdmin', function($user) {
 
-            return $user->role == 'Admin';
+            return $user->perfil == 'Administrador';
 
         });
 
@@ -37,7 +38,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('isResponsable', function($user) {
 
-            return $user->role == 'Responsable';
+            return $user->perfil == 'Responsable_de_Formacion';
 
         });
 
@@ -45,10 +46,25 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('isFormador', function($user) {
 
-            return $user->role == 'Formador';
+            return $user->perfil == 'Formador';
+
+        });
+        Gate::define('isAdminOrResponsable', function($user) {
+
+            return $user->perfil ==   'Administrador' ||$user->perfil ==   'Responsable_de_Formacion' ;
+
+        });
+        Gate::define('isResponsableOrFormador', function($user) {
+
+            return $user->perfil ==   'Formador' ||$user->perfil ==   'Responsable_de_Formacion' ;
 
         });
 
+        Gate::define('isHaveEntitade', function($user) {
+
+            return $user->perfil ==   ('Responsable_de_Formacion' && !isset($user->entidad)) || $user->perfil == 'Administrador' ;
+
+        });
         //
     }
 }
