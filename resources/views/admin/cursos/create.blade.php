@@ -297,7 +297,7 @@
             <div class="col-sm">
                 <label for="examen-t" class="col-sm-2 col-form-label">examen-t</label>
                 <div class="col-sm-9">
-                    <select name='examen-t' class="form-control {{$errors->first('examen-t') ? "is-invalid" : "" }} " id="examen-t">
+                    <select name='examen_t' class="form-control {{$errors->first('examen-t') ? "is-invalid" : "" }} " id="examen-t">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($examen_t as $examen_t)
                             <option value="{{ $examen_t->id }}">{{ $examen_t->nombre }}</option>
@@ -312,7 +312,7 @@
             <div class="col-sm">
                 <label for="examen-p" class="col-sm-2 col-form-label">	examen-p</label>
                 <div class="col-sm-9">
-                    <select name='examen-p' class="form-control {{$errors->first('examen-p') ? "is-invalid" : "" }} " id="examen_p">
+                    <select name='examen_p' class="form-control {{$errors->first('examen-p') ? "is-invalid" : "" }} " id="examen_p">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($examen_p as $examen_p)
                             <option value="{{ $examen_p->id }}">{{ $examen_p->nombre }}</option>
@@ -356,8 +356,8 @@
                 <label for="publico-privado" class="col-sm-2 col-form-label">publico-privado</label>
                 <div class="col-sm-9">
 
-                    <label for="publico-privado" class="col-sm-2 col-form-label">publico</label><input type="radio" name='publico-privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador de certificación">
-                    <label for="publico-privado" class="col-sm-2 col-form-label">privado</label><input type="radio" name='publico-privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador de certificación" checked="checked">
+                    <label for="publico-privado" class="col-sm-2 col-form-label">publico</label><input type="radio" name='publico_privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador de certificación">
+                    <label for="publico-privado" class="col-sm-2 col-form-label">privado</label><input type="radio" name='publico_privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador de certificación" checked="checked">
 
 {{--                    <input type="text" name='publico-privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="{{old('publico-privado')}}" id="publico-privado" >--}}
                     <div class="invalid-feedback">
