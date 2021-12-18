@@ -16,8 +16,8 @@
 
     <form action="{{ route('admin.horario.update',$horario->id) }}" method="POST">
         @csrf
-        <div class="container">
-            <div class="form-group ml-2">
+        <div class="form-groups">
+            <div class="form-group col-md-4">
                 <label for="curso" class="col-sm-2 col-form-label">Curso</label>
                 <div class="col-sm-9">
                     <select name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
@@ -31,9 +31,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="form-group ml-2">
+      
+     
+            <div class="form-group col-md-4">
                 <label for="category" class="col-sm-2 col-form-label">Contenido</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" {{$horario->contenido == "Teoría" ? "checked" : ""}} name="contenido" value="1" id=1>
@@ -48,12 +48,12 @@
                     </label>
                 </div>
             </div>
-        </div>
+ 
 
 
 
-        <div class="container">
-            <div class="form-group ml-2">
+
+            <div class="form-group col-md-4">
                 <label for="title" class="col-sm-2 col-form-label">Alumnos</label>
                 <div class="col-sm-10">
                     <input type="text" name='alumnos' class="form-control {{$errors->first('title') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $horario->alumnos}} " id="alumnos" placeholder="Número de asistentes
@@ -79,10 +79,10 @@
                     {{ $errors->first('	final') }}
                 </div>
             </div>
-
-            <div class="form-group ml-2">
+            </div>
+            <div class="form-group col-md-4">
                 <div class="col-sm-3">
-                    <button type="submit" class="btn btn-primary">Editar</button>
+                    <button type="submit" class="btn btn-info">Editar</button>
                 </div>
             </div>
         </div>

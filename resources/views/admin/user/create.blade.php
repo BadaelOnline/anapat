@@ -50,9 +50,9 @@
 <form action="{{ route('admin.user.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
-    <div class="container">
+    <div class="form-groups">
 
-        <div class="form-group ml-5">
+        <div class="form-group col-md-4">
             <label for="name" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-9">
                 <input type="text" name='name' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('name')}}" id="name" placeholder="Ex: Susi Similikiti">
@@ -62,7 +62,7 @@
             </div>
         </div>
 
-          <div class="form-group ml-5">
+          <div class="form-group col-md-4 ">
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-9">
                 <input type="email" name='email' class="form-control {{$errors->first('email') ? "is-invalid" : "" }} " value="{{old('email')}}" id="email" placeholder="Email">
@@ -73,7 +73,7 @@
         </div>
 
         @can('isAdmin')
-        <div class="form-group ml-5">
+        <div class="form-group col-md-4">
             <label for="entidad" class="col-sm-2 col-form-label">Perfil</label>
             <div class="col-sm-9">
                 <select name='perfil' class="form-control {{$errors->first('perfil') ? "is-invalid" : "" }} " id="perfil">
@@ -90,7 +90,7 @@
         @endcan
 
         @can('isResponsable')
-        <div class="form-group ml-5">
+        <div class="form-group col-md-4">
             <div class="col-sm-9">
                 <input type="hidden" name='perfil' class="form-control {{$errors->first('perfil') ? "is-invalid" : "" }} " value="Formador" id="perfil" placeholder="perfil">
                 <div class="invalid-feedback">
@@ -100,7 +100,7 @@
         </div>
         @endcan
 
-         <div class="form-group ml-5">
+         <div class="form-group col-md-4 ">
             <label for="password" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-9">
                 <input type="password" name='password' class="form-control {{$errors->first('password') ? "is-invalid" : "" }} " value="{{old('password')}}" id="password" placeholder="Password">
@@ -110,7 +110,7 @@
             </div>
         </div>
 
-        <div class="form-group ml-5">
+        <div class="form-group col-md-4">
             <label for="apellidos" class="col-sm-2 col-form-label">Alias </label>
             <div class="col-sm-9">
                 <input type="text" placeholder="Alias" name="alias" id="alias" cols="40" rows="10"  class="form-control {{$errors->first('alias') ? "is-invalid" : "" }} ">{{old('alias')}}</input>
@@ -120,7 +120,7 @@
             </div>
         </div>
 
-        <div class="form-group ml-5">
+        <div class="form-group col-md-4">
             <label for="apellidos" class="col-sm-2 col-form-label">Apellidos </label>
             <div class="col-sm-9">
                 <input type="text" placeholder="Apellidos del Formador Name" name="apellidos" id="apellidos" cols="40" rows="10"  class="form-control {{$errors->first('apellidos') ? "is-invalid" : "" }} ">{{old('apellidos')}}</input>
@@ -130,7 +130,7 @@
             </div>
         </div>
 
-        <div class="form-group ml-5">
+        <div class="form-group col-md-4">
             <label for="nombre" class="col-sm-2 col-form-label">Nombre </label>
             <div class="col-sm-9">
                 {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
@@ -142,7 +142,7 @@
             </div>
         </div>
 
-        <div class="form-group ml-5">
+        <div class="form-group col-md-4">
             <label for="ciudad" class="col-sm-2 col-form-label">Ciudad</label>
             <div class="col-sm-7">
                 <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad')}}" id="ciudad" placeholder="Ciudad de la sede">
@@ -152,7 +152,7 @@
             </div>
         </div>
 
-        <div class="form-group ml-5">
+        <div class="form-group col-md-4">
             <label for="direccion" class="col-sm-2 col-form-label">direccion</label>
             <div class="col-sm-7">
                 <input type="text" name='direccion' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Domicilio de la sede">
@@ -162,7 +162,7 @@
             </div>
         </div>
 
-        <div class="form-group ml-5">
+        <div class="form-group col-md-4">
             <label for="codigo_postal" class="col-sm-2 col-form-label">codigo_postal</label>
             <div class="col-sm-7">
                 <input type="number" name='codigo_postal' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Código postal de la sede">
@@ -172,7 +172,7 @@
             </div>
         </div>
 
-        <div class="form-group ml-5">
+        <div class="form-group col-md-4">
             <label for="entidad" class="col-sm-2 col-form-label">Entidad</label>
             <div class="col-sm-9">
                 <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
@@ -187,22 +187,22 @@
             </div>
         </div>
 
-        <div class="form-group ml-5">
+        <div class="form-group col-md-4">
             <label for="estado" class="col-sm-2 col-form-label">Estado</label>
             <div class="col-sm-9">
                 {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                <label for="estado" class="col-sm-2 col-form-label">yes</label><input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador de certificación">
-                <label for="estado" class="col-sm-2 col-form-label">no</label><input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador de certificación" checked="checked">
+                <label for="estado" class="col-sm-2 col-form-label">yes <input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador de certificación"></label>
+                <label for="estado" class="col-sm-2 col-form-label">no <input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador de certificación" checked="checked"></label>
                 <div class="invalid-feedback">
                     {{ $errors->first('estado') }}
                 </div>
             </div>
         </div>
 
-        <div class="form-group ml-5">
+        <div class="form-group col-md-12">
             <div class="col-sm-3">
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-info">Create</button>
             </div>
         </div>
     </div>
