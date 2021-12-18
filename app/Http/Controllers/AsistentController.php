@@ -140,8 +140,16 @@ class AsistentController extends Controller
             if($asistent->examen_t_pdf && file_exists(storage_path('app/public/' . $asistent->examen_t_pdf))){
                 \Storage::delete('public/'. $asistent->examen_t_pdf);
             }
+<<<<<<< HEAD
             $examen_t_pdf_path = $examen_t_pdf->store('images/asistent', 'public');
             $asistent->examen_t_pdf = $examen_t_pdf_path;
+=======
+
+            $examen_t_pdf_path = $examen_t_pdf->store('images/asistent', 'public');
+
+            $asistent->examen_t_pdf = $examen_t_pdf_path;
+
+>>>>>>> 979122e0b6a979f4cfff317719fb51dfff5b0116
         }
         $examen_p_pdf = $request->file('examen_t_pdf');
 
@@ -154,9 +162,19 @@ class AsistentController extends Controller
         }
 
         if ($asistent->save()) {
+<<<<<<< HEAD
             return redirect()->route('admin.asistent')->with('success', 'Data updated successfully');
         } else {
             return redirect()->route('admin.asistent.edit')->with('error', 'Data failed to update');
+=======
+
+            return redirect()->route('admin.asistent')->with('success', 'Data updated successfully');
+
+        } else {
+
+            return redirect()->route('admin.asistent.edit')->with('error', 'Data failed to update');
+
+>>>>>>> 979122e0b6a979f4cfff317719fb51dfff5b0116
         }
     }
 

@@ -79,13 +79,16 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     // Manage Portfolio
     Route::get('cursos', [CursosController::class, 'index'])->name('admin.cursos');
+    Route::get('inactiveCursos', [CursosController::class, 'index2'])->name('admin.inactiveCursos');
     Route::get('cursos/create', [CursosController::class, 'create'])->name('admin.cursos.create');
     Route::post('cursos/create', [CursosController::class, 'store'])->name('admin.cursos.store');
     Route::get('cursos/edit/{id}', [CursosController::class, 'edit'])->name('admin.cursos.edit');
     Route::post('cursos/edit/{id}', [CursosController::class, 'update'])->name('admin.cursos.update');
     Route::delete('cursos/destroy/{id}',[CursosController::class, 'destroy'])->name('admin.cursos.destroy');
+    Route::post('cursos/activo/{id}',[CursosController::class, 'activo'])->name('admin.cursos.activo');
 
-     // Manage Categories
+
+    // Manage Categories
      Route::get('categories', [CategoryController::class, 'index'])->name('admin.category');
      Route::get('categories/create', [CategoryController::class, 'create'])->name('admin.category.create');
      Route::post('categories/create', [CategoryController::class, 'store'])->name('admin.category.store');

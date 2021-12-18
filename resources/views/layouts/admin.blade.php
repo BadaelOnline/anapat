@@ -188,13 +188,13 @@
     </li>
    
 
-    <li class="nav-item {{ in_array(Route::currentRouteName(),[
-            'admin.horario',
-        ])? 'active' : ''}}">
-      <a class="nav-link" href="{{ route('admin.horario') }}">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Horario</span></a>
-    </li>
+    {{--    <li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
+{{--            'admin.horario',--}}
+{{--        ])? 'active' : ''}}">--}}
+{{--      <a class="nav-link" href="{{ route('admin.horario') }}">--}}
+{{--        <i class="fas fa-fw fa-table"></i>--}}
+{{--        <span>Horario</span></a>--}}
+{{--    </li>--}}
 
 
 

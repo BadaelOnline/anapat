@@ -17,7 +17,19 @@ class CursosController extends Controller
      */
     public function index()
     {
-        $cursos = Cursos::orderBy('id','desc')->get();
+        $cursos = Cursos::orderBy('id','desc')->where('estado',1)->get();
+
+        return view('admin.cursos.index',compact('cursos'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index2()
+    {
+        $cursos = Cursos::orderBy('id','desc')->where('estado',0)->get();
 
         return view('admin.cursos.index',compact('cursos'));
     }
@@ -195,7 +207,20 @@ class CursosController extends Controller
 
             $new_cover_path = $new_cover->store('images/Cursos', 'public');
 
+<<<<<<< HEAD
             $cursos->cover = $new_cover_path;
+=======
+        $asistentes_pdf = $request->file('asistentes_pdf');
+
+        if($asistentes_pdf){
+            if($cursos->asistentes_pdf && file_exists(storage_path('app/public/' . $cursos->asistentes_pdf))){
+                \Storage::delete('public/'. $cursos->asistentes_pdf);
+            }
+
+            $asistentes_pdf_path = $asistentes_pdf->store('images/Cursos', 'public');
+
+            $cursos->asistentes_pdf = $asistentes_pdf_path;
+>>>>>>> 979122e0b6a979f4cfff317719fb51dfff5b0116
 
         }
 
@@ -220,6 +245,22 @@ class CursosController extends Controller
     {
         $cursos = cursos::findOrFail($id);
         $cursos->delete();
+
+        return redirect()->route('admin.cursos')->with('success', 'Data deleted successfully');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function activo($id)
+    {
+        $cursos = cursos::findOrFail($id);
+        $cursos->estado = 1;
+//        $cursos->delete();
+        $cursos->save();
 
         return redirect()->route('admin.cursos')->with('success', 'Data deleted successfully');
     }

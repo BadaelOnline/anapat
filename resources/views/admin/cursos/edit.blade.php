@@ -407,7 +407,7 @@
                     <label for="asistent" class="col-sm-2 col-form-label">Asistent</label>
                     <div class="col-sm-10">
                         <div class="card-header py-3">
-                            <a href="{{ route('admin.asistent.create',[$cursos->id]) }}" class="btn btn-success">Create asistent</a>
+                            <a href="{{ route('admin.asistent.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new')}} Asistent</a>
                         </div>
                         <div class="table-responsive">
 
@@ -471,15 +471,15 @@
 
                                             <a href="{{route('admin.asistent.edit', [$asistent->id])}}" class="btn btn-info btn-sm"> Edit </a>
 
-{{--                                            <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('Delete this asistent permanently?')">--}}
+                                            {{--                                            <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('Delete this asistent permanently?')">--}}
 
-{{--                                                @csrf--}}
+                                            {{--                                                @csrf--}}
 
-{{--                                                <input type="hidden" name="_method" value="DELETE">--}}
+                                            {{--                                                <input type="hidden" name="_method" value="DELETE">--}}
 
-{{--                                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">--}}
+                                            {{--                                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">--}}
 
-{{--                                            </form>--}}
+                                            {{--                                            </form>--}}
 
                                         </td>
 
@@ -503,7 +503,7 @@
                     <label for="horario" class="col-sm-2 col-form-label">Horario</label>
                     <div class="col-sm-10">
                         <div class="card-header py-3">
-                            <a href="{{ route('admin.horario.create',[$cursos->id]) }}" class="btn btn-success">Create Horario</a>
+                            <a href="{{ route('admin.horario.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new')}} Horario</a>
                         </div>
                         <div class="table-responsive">
 
