@@ -86,7 +86,7 @@
 
                         <td>
 
-                            <a href="{{route('admin.operadores.edit', [$operadores->id])}}" class="btn btn-info btn-sm"> Edit </a>
+                            <a href="{{route('admin.operadores.edit', [$operadores->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-edit"></i> </a>
 
                             <form method="POST" action="{{route('admin.operadores.destroy', [$operadores->id])}}" class="d-inline" onsubmit="return confirm('Delete this $operadores permanently?')">
 
@@ -94,7 +94,9 @@
 
                                 <input type="hidden" name="_method" value="DELETE">
 
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                <button type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                <i class='fas fa-trash-alt'></i> 
+                                </button>
 
                             </form>
 

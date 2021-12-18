@@ -82,7 +82,7 @@
 
                         <td>
 
-                            <a href="{{route('admin.horario.edit', [$horario->id])}}" class="btn btn-info btn-sm"> Edit </a>
+                            <a href="{{route('admin.horario.edit', [$horario->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-edit"></i> </a>
 
                             <form method="POST" action="{{route('admin.horario.destroy', [$horario->id])}}" class="d-inline" onsubmit="return confirm('Delete this horario permanently?')">
 
@@ -90,7 +90,9 @@
 
                                 <input type="hidden" name="_method" value="DELETE">
 
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                <button type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                <i class='fas fa-trash-alt'></i> 
+                                </button>
 
                             </form>
 

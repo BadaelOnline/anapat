@@ -29,17 +29,9 @@
 
         @foreach ($banner as $key => $banner)
 
-        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" style="background-image: url({{asset('storage/'.$banner->cover)}});">
+        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" style="background-image: url(http://anapat.e-dalely.com/wp-content/uploads/2021/10/EstudioAlquiler_ANAPAT_2020-e1634196672288.jpg);">
           <div class="carousel-container">
-            <div class="carousel-content animate__animated animate__fadeInUp">
-              <h2>{{ $banner->title }}</h2>
-              <p>{{ $banner->desc }}</p>
-              @isset($banner->link)
-              <div class="text-center">
-                <a href="{{ $banner->link }}" class="btn-get-started">Read More</a>
-              </div>
-              @endisset
-            </div>
+           
           </div>
         </div>
 
@@ -65,117 +57,107 @@
 
   <main id="main">
 
-    <!-- ======= About Us Section ======= -->
-    <section id="about-us" class="about-us">
-      <div class="container" data-aos="fade-up">
+ <!-- ======= about us Section ======= -->
+ <section id="portfolio" class="portfolio">
+      <div class="container">
 
-        <div class="section-title">
-          <h2>About Us</strong></h2>
+      <div class="section-title">
+      <h2>Types of MEWPs</h2>
         </div>
 
-        <div class="row content">
-          <div class="col-lg-6" data-aos="fade-right">
-            <h2>{{ $about->title }}</h2>
-            <h3>{{ $about->subject }}</h3>
+        <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="" class="filter-active">PAV</li>
+           
+              <li data-filter="">Mast Lifts</li>
+              <li data-filter="">Scissor Lifts</li>
+              <li data-filter="">Articulating Boom Lift</li>
+              <li data-filter="">Stick Boom Lifts</li>
+              <li data-filter="">Track Mounts</li>
+              <li data-filter="">Truck Mounts</li>
+            </ul>
           </div>
-          <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
-            <p>
-              {!! $about->desc !!}
-            </p>
-          </div>
-        </div>
 
+          <div class=" " data-aos="fade-up">
+        <h2>Reach height: 3.60m – 5.10m</h2>
+        <h3>IPAF category: PAV</h3>
+        <p>
+        Push around vertical platforms, often called PAVs or personnel lifts, are a small type of mobile vertical lift with scissor operation. PAVs are ideal for indoor low level access making them suitable for smaller warehouses and factories, replacing ladders and steps that are not recommended for safe access.
+        </p>
+        <p>
+        They are compact and lightweight, which allows them to navigate aisles, doorways and narrow corners, and can be easily moved from location to location, including between floors in multistory buildings.
+        </p>
+        <p>
+        PAVs meet the requirements of the Work at Height regulations by ensuring the safety of workers on the platform with a low entry point.
+
+        </p>
+      
+        </div>
       </div>
-    </section><!-- End About Us Section -->
+    </section>
+    <!-- End about us Section -->
+    <!-- ======= about us Section ======= -->
+ <section id="portfolio" class="portfolio about">
+      <div class="container">
 
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Services</strong></h2>
-          <p>Laborum repudiandae omnis voluptatum consequatur mollitia ea est voluptas ut</p>
+      <div class="section-title">
+          <h2>Inform About ANAPAT Training</h2>
         </div>
 
         <div class="row">
-
-          @foreach ($service as $service)
-              <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-              <div class="icon-box iconbox-blue">
-                <div class="icon">
-                  <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,521.0016835830174C376.1290562159157,517.8887921683347,466.0731472004068,529.7835943286574,510.70327084640275,468.03025145048787C554.3714126377745,407.6079735673963,508.03601936045806,328.9844924480964,491.2728898941984,256.3432110539036C474.5976632858925,184.082847569629,479.9380746630129,96.60480741107993,416.23090153303,58.64404602377083C348.86323505073057,18.502131276798302,261.93793281208167,40.57373210992963,193.5410806939664,78.93577620505333C130.42746243093433,114.334589627462,98.30271207620316,179.96522072025542,76.75703585869454,249.04625023123273C51.97151888228291,328.5150500222984,13.704378332031375,421.85034740162234,66.52175969318436,486.19268352777647C119.04800174914682,550.1803526380478,217.28368757567262,524.383925680826,300,521.0016835830174"></path>
-                  </svg>
-                  <i class="{{ $service->icon }}"></i>
-                </div>
-                <h4><a href="{{ route('serviceshow',$service->slug) }}">{{ $service->title }}</a></h4>
-                <p>{{ $service->quote }}</p>
-              </div>
-            </div>
-          @endforeach
-
-        </div>
-
-      </div>
-    </section><!-- End Services Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
-      <div class="container">
-
-        <div class="section-title" data-aos="fade-up">
-          <h2>Portfolio</h2>
-        </div>
-
-        <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              @foreach ($pcategories as $category)
-              <li data-filter=".{{ $category->id }}">{{ $category->name }}</li>
-              @endforeach
+            <ul class="col-md-3 col-sm-12 about-filter" id="portfolio-flters">
+              <li data-filter="" class="filter-active">about ANAPAT</li>
+              <li data-filter="">Characteristics</li>
+              <li data-filter="">certifications</li>
             </ul>
-          </div>
+            <div class="col-md-9 col-sm-12 info" data-aos="fade-up">
+        <h2 >Reach height: 3.60m – 5.10m</h2>
+     
+        <p>
+        Push around vertical platforms, often called PAVs or personnel lifts, are a small type of mobile vertical lift with scissor operation. PAVs are ideal for indoor low level access making them suitable for smaller warehouses and factories, replacing ladders and steps that are not recommended for safe access.
+        They are compact and lightweight, which allows them to navigate aisles, doorways and narrow corners, and can be easily moved from location to location, including between floors in multistory buildings.
+        PAVs meet the requirements of the Work at Height regulations by ensuring the safety of workers on the platform with a low entry point.
+        </p>
+      <button>show more</button>
         </div>
-
-        <div class="row portfolio-container" data-aos="fade-up">
-
-          @foreach ($portfolio as $portfolio)
-          <div class="col-lg-4 col-md-6 portfolio-item {{ $portfolio->pcategory_id }}">
-            <img src="{{ asset('storage/'.$portfolio->cover) }}" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>{{ $portfolio->name }}</h4>
-              <p>{{ $portfolio->pcategory->name }}</p>
-              <a href="{{ asset('storage/'.$portfolio->cover) }}" data-gall="portfolioGallery" class="venobox preview-link" title="{{ $portfolio->name }}"><i class="bx bx-plus"></i></a>
-              <a href="{{ route('portfolioshow',$portfolio->slug) }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
           </div>
-          @endforeach
-
-        </div>
-
+     
       </div>
-    </section><!-- End Portfolio Section -->
-
+    </section>
+    <!-- End about us Section -->
     <!-- ======= Our Clients Section ======= -->
     <section id="clients" class="clients">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Partners</h2>
+          <h2>Our Partner</h2>
         </div>
 
         <div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">
 
-          @foreach ($partner as $partner)
+        
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <a href="{{ $partner->link }}" target="_blank" rel="noopener noreferrer">
-                <img src="{{ asset('storage/'.$partner->cover) }}" class="img-fluid" alt="{{ $partner->name }}">
+              <a href=" target="_blank" rel="noopener noreferrer">
+                <img src="http://anapat.e-dalely.com/wp-content/uploads/2021/11/jlg-logo-sims-crane.jpg" class="img-fluid" alt="">
               </a>
             </div>
           </div>
-          @endforeach
+        
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="client-logo">
+              <a href=" target="_blank" rel="noopener noreferrer">
+                <img src="http://anapat.e-dalely.com/wp-content/uploads/2021/10/Genie_BluBlk_2-e1634564636678.jpg" class="img-fluid" alt="">
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="client-logo">
+              <a href=" target="_blank" rel="noopener noreferrer">
+                <img src="http://anapat.e-dalely.com/wp-content/uploads/2021/10/HAULOTTE_Logo2017-2.jpg" class="img-fluid" alt="">
+              </a>
+            </div>
+          </div>
 
         </div>
 

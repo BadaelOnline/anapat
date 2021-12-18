@@ -1,5 +1,19 @@
 @extends('layouts.admin')
+@section('styles')
+<style>
+input[type="radio"] {
+    cursor: pointer;
+}
+input[type="radio"]:focus {
+    color: #495057;
+    background-color: #0477b1;
+    border-color: transparent;
+    outline: 0;
+    box-shadow: none;
+}
+</style>
 
+@endsection
 @section('content')
 
     @if (session('error'))
@@ -11,10 +25,10 @@
     <form action="{{ route('admin.formadores.update',$formadores->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <div class="container">
+        <div class="form-groups">
 
 
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
 
                 <label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
 
@@ -27,7 +41,7 @@ Name">
                 </div>
             </div>
 
-            {{--<div class="form-group ml-5">--}}
+            {{--<div class="form-group col-md-4">--}}
             {{--<label for="quote" class="col-sm-2 col-form-label">Entidad</label>--}}
             {{--<div class="col-sm-9">--}}
             {{--<input type="text" name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " value="{{old('entidad')}}" id="entidad" placeholder="entidad">--}}
@@ -36,7 +50,7 @@ Name">
             {{--</div>--}}
             {{--</div>--}}
             {{--</div>--}}
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
                 <label for="entidad" class="col-sm-2 col-form-label">Entidad </label>
                 <div class="col-sm-9">
                     <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
@@ -50,7 +64,7 @@ Name">
                     </div>
                 </div>
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
                 <label for="apellidos" class="col-sm-2 col-form-label">Apellidos </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
@@ -61,7 +75,7 @@ Name">
                     </div>
                 </div>
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
                 <label for="nombre" class="col-sm-2 col-form-label">Nombre </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
@@ -72,7 +86,7 @@ Name">
                     </div>
                 </div>
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
                 <label for="dni" class="col-sm-2 col-form-label">DNI </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
@@ -83,7 +97,7 @@ Name">
                     </div>
                 </div>
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
                 <label for="dni_img" class="col-sm-2 col-form-label">DNI </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
@@ -94,7 +108,7 @@ Name">
                     </div>
                 </div>
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
                 <label for="operador_pdf" class="col-sm-2 col-form-label">Operador pdf</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
@@ -105,7 +119,7 @@ Name">
                     </div>
                 </div>
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
                 <label for="cert_empresa_pdf" class="col-sm-2 col-form-label">Cert empresa pdf</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
@@ -116,7 +130,7 @@ Name">
                     </div>
                 </div>
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
                 <label for="vida_laboral_pdf" class="col-sm-2 col-form-label">Vida laboral pdf</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
@@ -127,7 +141,7 @@ Name">
                     </div>
                 </div>
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
                 <label for="prl_pdf" class="col-sm-2 col-form-label">PRL pdf</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
@@ -138,7 +152,7 @@ Name">
                     </div>
                 </div>
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
                 <label for="pemp_pdf" class="col-sm-2 col-form-label">PEMP pdf</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
@@ -149,7 +163,7 @@ Name">
                     </div>
                 </div>
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
                 <label for="cap_pdf" class="col-sm-2 col-form-label">CAP pdf</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
@@ -160,7 +174,7 @@ Name">
                     </div>
                 </div>
             </div>
-            <div class="form-group ml-5">
+            <div class="form-group col-md-4">
                 <label for="fecha" class="col-sm-2 col-form-label">	Fecha</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
@@ -171,24 +185,24 @@ Name">
                     </div>
                 </div>
             </div>
-            <div class="form-group ml-5">
-                <label for="estado" class="col-sm-2 col-form-label">	Estado</label>
-                <div class="col-sm-9">
+            <div class="form-group col-md-4">
+                <label for="estado" class="col-sm-12 col-form-label  text-center">	Estado</label>
+                <div class="col-sm-12  text-center">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <label for="estado" class="col-sm-2 col-form-label">yes</label><input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador de certificación">
-                    <label for="estado" class="col-sm-2 col-form-label">no</label><input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador de certificación" checked="checked">
+                    <label for="estado" class="col-sm-2 col-form-label">yes <input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador de certificación"></label>
+                    <label for="estado" class="col-sm-2 col-form-label">no <input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador de certificación" checked="checked"></label>
                     <div class="invalid-feedback">
                         {{ $errors->first('estado') }}
                     </div>
                 </div>
             </div>
 
-            <div class="form-group ml-5">
+            <div class="form-group col-md-12">
 
                 <div class="col-sm-3">
 
-                    <button type="submit" class="btn btn-primary">Editar</button>
+                    <button type="submit" class="btn btn-info">Editar</button>
 
                 </div>
 

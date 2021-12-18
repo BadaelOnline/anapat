@@ -20,16 +20,16 @@
   <!-- Custom styles for this template-->
   <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
 {{--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--}}
-{{--  <link id="pagestyle" href="{{ asset('admin/css/material-dashboard.css?v=3.0.0')}}" rel="stylesheet" />--}}
+  <link id="pagestyle" href="{{ asset('admin/css/material-dashboard.css?v=3.0.0')}}" rel="stylesheet" />
 
-{{--  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />--}}
-{{--  <!-- Nucleo Icons -->--}}
-{{--  <link href="{{ asset('admin/css/nucleo-icons.css')}}" rel="stylesheet" />--}}
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <!-- Nucleo Icons -->
+  <link href="{{ asset('admin/css/nucleo-icons.css')}}" rel="stylesheet" />
 
-{{--  <!-- Font Awesome Icons -->--}}
-{{--  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>--}}
-{{--  <!-- Material Icons -->--}}
-{{--  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">--}}
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   {{--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--}}
   {{-- Summernote CDN --}}
 
@@ -52,17 +52,90 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
-      <img width="207" height="97" src="http://anapat.e-dalely.com/wp-content/uploads/2021/11/cropped-anpat-removebg-preview-1-207x97-1-180x84.png" class="attachment-medium size-medium" alt="" loading="lazy" srcset="http://anapat.e-dalely.com/wp-content/uploads/2021/11/cropped-anpat-removebg-preview-1-207x97-1.png 1x, http://anapat.e-dalely.com/wp-content/uploads/2021/10/cropped-cropped-anpat-removebg-preview.png 2x" sizes="(max-width: 207px) 100vw, 207px">
+      <img width="207" height="97" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="http://anapat.e-dalely.com/wp-content/uploads/2021/11/cropped-anpat-removebg-preview-1-207x97-1.png 1x, http://anapat.e-dalely.com/wp-content/uploads/2021/10/cropped-cropped-anpat-removebg-preview.png 2x" sizes="(max-width: 207px) 100vw, 207px">
     </a>
 
     <!-- Divider -->
+    @can('isAdmin')
+    <nav class="navbar navbar-expand navbar-light bg-white topbar  static-top ">
 
+        <!-- Sidebar Toggle (Topbar) -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center d-md-none" href="{{ route('admin.dashboard') }}">
+      <img width="207" height="97" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="http://anapat.e-dalely.com/wp-content/uploads/2021/11/cropped-anpat-removebg-preview-1-207x97-1.png 1x, http://anapat.e-dalely.com/wp-content/uploads/2021/10/cropped-cropped-anpat-removebg-preview.png 2x" sizes="(max-width: 207px) 100vw, 207px">
+    </a>
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="d-flex nav-setting">
+        @can('isAdmin')
+    <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item d-md-block d-none {{ in_array(Route::currentRouteName(),[
+            'admin.post',
+            'admin.category',
+            'admin.tag',
+            'admin.post.trash',
+        ])? 'active' : ''}}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-table"></i>
+          <span>{{__('message.Blog')}}</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ route('admin.post') }}">{{__('message.Blog')}}</a>
+            <a class="collapse-item" href="{{ route('admin.category') }}">{{__('message.Categories')}}</a>
+            <a class="collapse-item" href="{{ route('admin.tag') }}">{{__('message.Tags')}}</a>
+            <a class="collapse-item" href="{{ route('admin.post.trash') }}">{{__('message.Trash')}}</a>
+          </div>
+        </div>
+      </li>
+    @endcan
+    @can('isAdmin')
+    <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item d-md-block d-none {{ in_array(Route::currentRouteName(),[
+            'admin.about',
+            'admin.banner',
+            'admin.general',
+        ])? 'active' : ''}}"">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <i class="fas fa-fw fa-wrench"></i>
+        <span>{{__('message.Settings')}}</span>
+      </a>
+      <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" href="{{ route('admin.about') }}">{{__('message.About')}}</a>
+          <a class="collapse-item" href="{{ route('admin.banner') }}">{{__('message.Banner')}}</a>
+          <a class="collapse-item" href="{{ route('admin.general') }}">{{__('message.General Settings')}}</a>
+        </div>
+      </div>
+      </li>
+  @endcan
+  <li class="nav-item nav-logout dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+              <span class="mr-2 d-none d-lg-inline text-gray-800 small">{{ auth::user()->name }}</span>
+
+              <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                {{__('message.Logout')}}
+              </a>
+            </div>
+          </li>
+      </div>
+        <!-- Topbar Navbar -->
+
+      </nav>
+      @endcan
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item {{ in_array(Route::currentRouteName(),[
+  <div class="d-flex item-side" id="show-list">
+  <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.dashboard',
-        ])? 'active' : ''}}" style="margin-inline-start: 10px;">
+        ])? 'active' : ''}}">
       <a class="nav-link" href="{{ route('admin.dashboard') }}">
-        <span>  <i class="fas fa-fw fa-tachometer-alt"></i>{{__('message.Dashboard')}}</span></a>
+      <i class="fas fa-fw fa-tachometer-alt"></i>   <span> {{__('message.Dashboard')}}</span></a>
     </li>
     @can('isAdminOrResponsable')
       <li class="nav-item {{ in_array(Route::currentRouteName(),[
@@ -101,7 +174,7 @@
       <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <a class="collapse-item" href="{{ route('admin.cursos') }}">Cursos</a>
-          <a class="collapse-item" href="{{ route('admin.inactiveCursos') }}">Inactivo Cursos</a>
+          <a class="collapse-item" href="{{ route('admin.pcategory') }}">Cursos Categories</a>
         </div>
       </div>
     </li>
@@ -113,30 +186,9 @@
         <i class="fas fa-fw fa-table"></i>
         <span>Operadores</span></a>
     </li>
-    @can('isAdmin')
-    <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item  {{ in_array(Route::currentRouteName(),[
-            'admin.post',
-            'admin.category',
-            'admin.tag',
-            'admin.post.trash',
-        ])? 'active' : ''}}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-table"></i>
-          <span>{{__('message.Blog')}}</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{ route('admin.post') }}">{{__('message.Blog')}}</a>
-            <a class="collapse-item" href="{{ route('admin.category') }}">{{__('message.Categories')}}</a>
-            <a class="collapse-item" href="{{ route('admin.tag') }}">{{__('message.Tags')}}</a>
-            <a class="collapse-item" href="{{ route('admin.post.trash') }}">{{__('message.Trash')}}</a>
-          </div>
-        </div>
-      </li>
-    @endcan
+   
 
-{{--    <li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
+    {{--    <li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
 {{--            'admin.horario',--}}
 {{--        ])? 'active' : ''}}">--}}
 {{--      <a class="nav-link" href="{{ route('admin.horario') }}">--}}
@@ -146,13 +198,13 @@
 
 
 
-{{--    <li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
-{{--            'admin.asistent',--}}
-{{--        ])? 'active' : ''}}">--}}
-{{--      <a class="nav-link" href="{{ route('admin.asistent') }}">--}}
-{{--        <i class="fas fa-fw fa-table"></i>--}}
-{{--        <span>Asistent</span></a>--}}
-{{--    </li>--}}
+    <li class="nav-item {{ in_array(Route::currentRouteName(),[
+            'admin.asistent',
+        ])? 'active' : ''}}">
+      <a class="nav-link" href="{{ route('admin.asistent') }}">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Asistent</span></a>
+    </li>
 
   {{--<li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
   {{--'admin.page',--}}
@@ -187,33 +239,12 @@
   {{--<i class="fas fa-fw fa-table"></i>--}}
   {{--<span>Testimonials</span></a>--}}
   {{--</li>--}}
-  @can('isAdmin')
-    <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item {{ in_array(Route::currentRouteName(),[
-            'admin.about',
-            'admin.banner',
-            'admin.general',
-        ])? 'active' : ''}}">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>{{__('message.Settings')}}</span>
-      </a>
-      <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="{{ route('admin.about') }}">{{__('message.About')}}</a>
-          <a class="collapse-item" href="{{ route('admin.banner') }}">{{__('message.Banner')}}</a>
-          <a class="collapse-item" href="{{ route('admin.general') }}">{{__('message.General Settings')}}</a>
-        </div>
-      </div>
-      </li>
-  @endcan
+  
+  </div>
 
   <!-- Divider -->
 
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-inline circle-button">
-      <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
+
 
   </ul>
   <div class="showw" id="showw"><i class="fas fa-fw fa-arrow-right"></i></div>
@@ -227,35 +258,7 @@
     <div id="content">
 
       <!-- Topbar -->
-      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-        <!-- Sidebar Toggle (Topbar) -->
-        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-          <i class="fa fa-bars"></i>
-        </button>
-
-        <!-- Topbar Navbar -->
-        <ul class="navbar-nav ml-auto">
-          <!-- Nav Item - User Information -->
-          <li class="nav-item nav-logout dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-              <span class="mr-2 d-none d-lg-inline text-gray-800 small">{{ auth::user()->name }}</span>
-
-              <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-            </a>
-            <!-- Dropdown - User Information -->
-            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                {{__('message.Logout')}}
-              </a>
-            </div>
-          </li>
-
-        </ul>
-
-      </nav>
+  
       <!-- End of Topbar -->
 
       <!-- Begin Page Content -->
@@ -348,7 +351,7 @@
 
     $("#showw").click(function(){
         $("#showw").toggleClass("show-button");
-        $("#accordionSidebar").toggleClass("show-list");
+        $("#show-list").toggleClass("show-list");
     });
 
 

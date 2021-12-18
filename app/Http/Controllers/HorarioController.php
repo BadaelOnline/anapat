@@ -3,11 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cursos;
-use App\Models\EntidadesFormadoreas;
-use App\Models\Examen;
-use App\Models\Formadores;
-use App\Models\Tipo_De_Curso;
-use App\Models\Tipo_Maquina;
 use Illuminate\Http\Request;
 use App\Models\Horario;
 
@@ -31,10 +26,10 @@ class HorarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
         $curso=Cursos::select('id','curso')->get();
-        return view('admin.horario.create',compact('curso','id'));
+        return view('admin.horario.create',compact('curso'));
     }
 
     /**
@@ -49,22 +44,12 @@ class HorarioController extends Controller
 
 
         $horario = Horario::create($data);
-        $cursos = Cursos::findOrFail($request->curso);
-        $entidad=EntidadesFormadoreas::select('id','nombre')->get();
-        $formador=Formadores::select('id','nombre')->get();
-        $tipo_maquina=Tipo_Maquina::select('id','tipo_maquina')->get();
-        $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
-        $examen_t=Examen::select('id','nombre')->where('tipo',1)->get();
-        $examen_p=Examen::select('id','nombre')->where('tipo',2)->get();
-        $formadors=Formadores::select('id','nombre')->get();
-        $formadors2=Formadores::select('id','nombre')->get();
-        $formadors3=Formadores::select('id','nombre')->get();
 
         if ($horario) {
 
-            return redirect()->route('admin.cursos.edit',$cursos->id)->with('cursos','entidad','formador','tipo_maquina','tipo_curso','examen_t','examen_p','formadors','formadors2','formadors3');
+                return redirect()->route('admin.horario')->with('success', 'Data Berhasil Ditambahkan');
 
-        } else {
+               } else {
 
             return redirect()->route('admin.horario.create')->with('error', 'Data Gagal Ditambahkan');
 
