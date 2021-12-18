@@ -66,9 +66,9 @@ class HorarioController extends Controller
 
         } else {
 
-                return redirect()->route('admin.horario.create')->with('error', 'Data Gagal Ditambahkan');
+            return redirect()->route('admin.horario.create')->with('error', 'Data Gagal Ditambahkan');
 
-               }
+        }
     }
 
     /**
@@ -119,13 +119,13 @@ class HorarioController extends Controller
 
         if ($horario->save()) {
 
-                return redirect()->route('admin.horario')->with('success', 'Data Berhasil Diperbarui');
+            return redirect()->route('admin.horario')->with('success', 'Data Berhasil Diperbarui');
 
-               } else {
+        } else {
 
-                return redirect()->route('admin.horario.edit')->with('error', 'Data Gagal Diperbarui');
+            return redirect()->route('admin.horario.edit')->with('error', 'Data Gagal Diperbarui');
 
-               }
+        }
     }
 
     /**

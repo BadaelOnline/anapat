@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin - Dashboard</title>
+  <title>{{__('message.Dashboard')}}</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -19,7 +19,18 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+{{--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--}}
+{{--  <link id="pagestyle" href="{{ asset('admin/css/material-dashboard.css?v=3.0.0')}}" rel="stylesheet" />--}}
 
+{{--  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />--}}
+{{--  <!-- Nucleo Icons -->--}}
+{{--  <link href="{{ asset('admin/css/nucleo-icons.css')}}" rel="stylesheet" />--}}
+
+{{--  <!-- Font Awesome Icons -->--}}
+{{--  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>--}}
+{{--  <!-- Material Icons -->--}}
+{{--  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">--}}
+  {{--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--}}
   {{-- Summernote CDN --}}
 
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -51,26 +62,25 @@
             'admin.dashboard',
         ])? 'active' : ''}}" style="margin-inline-start: 10px;">
       <a class="nav-link" href="{{ route('admin.dashboard') }}">
-        <span>  <i class="fas fa-fw fa-tachometer-alt"></i>Dashboard</span></a>
+        <span>  <i class="fas fa-fw fa-tachometer-alt"></i>{{__('message.Dashboard')}}</span></a>
     </li>
-
+    @can('isAdminOrResponsable')
       <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.user',
         ])? 'active' : ''}}">
         <a class="nav-link" href="{{ route('admin.user') }}">
           <i class="fas fa-fw fa-table"></i>
-          <span>Admin</span></a>
+          <span>Usuarios</span></a>
       </li>
 
-    <li class="nav-item {{ in_array(Route::currentRouteName(),[
+      <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.entidades_formadoreas',
         ])? 'active' : ''}}">
-      <a class="nav-link" href="{{ route('admin.entidades_formadoreas') }}">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Entidades Formadoreas</span></a>
-    </li>
-
-
+        <a class="nav-link" href="{{ route('admin.entidades_formadoreas') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Entidades Formadoreas</span></a>
+      </li>
+    @endcan
     <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.formadores',
         ])? 'active' : ''}}">
@@ -103,34 +113,35 @@
         <i class="fas fa-fw fa-table"></i>
         <span>Operadores</span></a>
     </li>
+    @can('isAdmin')
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item  {{ in_array(Route::currentRouteName(),[
+      <li class="nav-item  {{ in_array(Route::currentRouteName(),[
             'admin.post',
             'admin.category',
             'admin.tag',
             'admin.post.trash',
         ])? 'active' : ''}}">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Blog</span>
-      </a>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="{{ route('admin.post') }}">Blog</a>
-          <a class="collapse-item" href="{{ route('admin.category') }}">Categories</a>
-          <a class="collapse-item" href="{{ route('admin.tag') }}">Tags</a>
-          <a class="collapse-item" href="{{ route('admin.post.trash') }}">Trash</a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-table"></i>
+          <span>{{__('message.Blog')}}</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ route('admin.post') }}">{{__('message.Blog')}}</a>
+            <a class="collapse-item" href="{{ route('admin.category') }}">{{__('message.Categories')}}</a>
+            <a class="collapse-item" href="{{ route('admin.tag') }}">{{__('message.Tags')}}</a>
+            <a class="collapse-item" href="{{ route('admin.post.trash') }}">{{__('message.Trash')}}</a>
+          </div>
         </div>
-      </div>
-    </li>
-
+      </li>
+    @endcan
 
     <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.horario',
         ])? 'active' : ''}}">
       <a class="nav-link" href="{{ route('admin.horario') }}">
         <i class="fas fa-fw fa-table"></i>
-        <span>horario</span></a>
+        <span>Horario</span></a>
     </li>
 
 
@@ -140,30 +151,30 @@
         ])? 'active' : ''}}">
       <a class="nav-link" href="{{ route('admin.asistent') }}">
         <i class="fas fa-fw fa-table"></i>
-        <span>asistent</span></a>
+        <span>Asistent</span></a>
     </li>
 
-    {{--<li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
-            {{--'admin.page',--}}
-        {{--])? 'active' : ''}}">--}}
-      {{--<a class="nav-link" href="{{ route('admin.page') }}">--}}
-        {{--<i class="fas fa-fw fa-table"></i>--}}
-        {{--<span>Pages</span></a>--}}
-    {{--</li>--}}
+  {{--<li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
+  {{--'admin.page',--}}
+  {{--])? 'active' : ''}}">--}}
+  {{--<a class="nav-link" href="{{ route('admin.page') }}">--}}
+  {{--<i class="fas fa-fw fa-table"></i>--}}
+  {{--<span>Pages</span></a>--}}
+  {{--</li>--}}
 
-    {{--<li class="nav-item">--}}
-    {{--<a class="nav-link" href="{{ route('admin.partner') }}">--}}
-    {{--<i class="fas fa-fw fa-table"></i>--}}
-    {{--<span>Partners</span></a>--}}
-    {{--</li>--}}
+  {{--<li class="nav-item">--}}
+  {{--<a class="nav-link" href="{{ route('admin.partner') }}">--}}
+  {{--<i class="fas fa-fw fa-table"></i>--}}
+  {{--<span>Partners</span></a>--}}
+  {{--</li>--}}
 
-    {{--<li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
-            {{--'admin.service',--}}
-        {{--])? 'active' : ''}}">--}}
-      {{--<a class="nav-link" href="{{ route('admin.service') }}">--}}
-        {{--<i class="fas fa-fw fa-table"></i>--}}
-        {{--<span>Services</span></a>--}}
-    {{--</li>--}}
+  {{--<li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
+  {{--'admin.service',--}}
+  {{--])? 'active' : ''}}">--}}
+  {{--<a class="nav-link" href="{{ route('admin.service') }}">--}}
+  {{--<i class="fas fa-fw fa-table"></i>--}}
+  {{--<span>Services</span></a>--}}
+  {{--</li>--}}
 
   {{--<li class="nav-item">--}}
   {{--<a class="nav-link" href="{{ route('admin.team') }}">--}}
@@ -176,29 +187,28 @@
   {{--<i class="fas fa-fw fa-table"></i>--}}
   {{--<span>Testimonials</span></a>--}}
   {{--</li>--}}
-
-  <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item {{ in_array(Route::currentRouteName(),[
+  @can('isAdmin')
+    <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.about',
             'admin.banner',
             'admin.general',
         ])? 'active' : ''}}"">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-      <i class="fas fa-fw fa-wrench"></i>
-      <span>Settings</span>
-    </a>
-    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="{{ route('admin.about') }}">About</a>
-        <a class="collapse-item" href="{{ route('admin.banner') }}">Banner</a>
-        <a class="collapse-item" href="{{ route('admin.general') }}">General Settings</a>
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <i class="fas fa-fw fa-wrench"></i>
+        <span>{{__('message.Settings')}}</span>
+      </a>
+      <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" href="{{ route('admin.about') }}">{{__('message.About')}}</a>
+          <a class="collapse-item" href="{{ route('admin.banner') }}">{{__('message.Banner')}}</a>
+          <a class="collapse-item" href="{{ route('admin.general') }}">{{__('message.General Settings')}}</a>
+        </div>
       </div>
-    </div>
-    </li>
+      </li>
+  @endcan
 
-
-
-      <!-- Divider -->
+  <!-- Divider -->
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-inline circle-button">
@@ -226,15 +236,11 @@
 
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
-
-
           <!-- Nav Item - User Information -->
           <li class="nav-item nav-logout dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-              <span class="mr-2 d-none d-lg-inline text-gray-800 small">1</span>
-
-{{--              <span class="mr-2 d-none d-lg-inline text-gray-800 small">{{ auth::user()->name }}</span>--}}
+              <span class="mr-2 d-none d-lg-inline text-gray-800 small">{{ auth::user()->name }}</span>
 
               <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
             </a>
@@ -242,7 +248,7 @@
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                Logout
+                {{__('message.Logout')}}
               </a>
             </div>
           </li>
@@ -267,7 +273,7 @@
     <footer class="sticky-footer bg-white">
       <div class="container my-auto">
         <div class="copyright text-center my-auto">
-          <span>Copyright &copy; Your Website 2020</span>
+          <span>Copyright &copy; ANAPAT </span>
         </div>
       </div>
     </footer>
@@ -289,14 +295,14 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{__('message.Ready to Leave?')}}</h5>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
-      <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+      <div class="modal-body">{{__('message.Select "Logout" below if you are ready to end your current session.')}}</div>
       <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">{{__('message.Cancel')}}</button>
 
         <a class="btn btn-primary" href="{{ route('logout') }}"
            onclick="event.preventDefault();
