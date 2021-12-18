@@ -407,7 +407,7 @@
                     <label for="asistent" class="col-sm-2 col-form-label">Asistent</label>
                     <div class="col-sm-10">
                         <div class="card-header py-3">
-                            <a href="{{ route('admin.asistent.create',[$cursos->id]) }}" class="btn btn-success">Create asistent</a>
+                            <a href="{{ route('admin.asistent.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new')}} Asistent</a>
                         </div>
                         <div class="table-responsive">
 
@@ -503,7 +503,7 @@
                     <label for="horario" class="col-sm-2 col-form-label">Horario</label>
                     <div class="col-sm-10">
                         <div class="card-header py-3">
-                            <a href="{{ route('admin.horario.create',[$cursos->id]) }}" class="btn btn-success">Create Horario</a>
+                            <a href="{{ route('admin.horario.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new')}} Horario</a>
                         </div>
                         <div class="table-responsive">
 

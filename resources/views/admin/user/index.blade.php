@@ -10,8 +10,8 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">Users</h1>     
-   
+<h1 class="h3 mb-2 text-gray-800">Usuarios</h1>
+
 @if (session('success'))
 
 <div class="alert alert-success">
@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.user.create') }}" class="btn btn-success">Create user</a>
+        <a href="{{ route('admin.user.create') }}" class="btn btn-success">{{__('message.add_new')}}</a>
 
     </div>
 
@@ -56,46 +56,46 @@
                 <tbody>
 
                 @php
-                
+
                 $no=0;
-                
+
                 @endphp
-                
+
                 @foreach ($user as $user)
-                     
-                    <tr> 
-             
-                        <td>{{ ++$no }}</td>  
-                
-                        <td>{{ $user->name }}</td> 
-                        
+
+                    <tr>
+
+                        <td>{{ ++$no }}</td>
+
+                        <td>{{ $user->name }}</td>
+
                         <td>{{ $user->email }}</td>
 
                         <td>{{ $user->role }}</td>
 
-                        <td>    
-                
+                        <td>
+
                             <a href="#" data-toggle="modal" data-target="#changepasswordModal" class="btn btn-primary btn-sm">Change Password</a>
                             <a href="{{route('admin.user.edit', [$user->id])}}" class="btn btn-info btn-sm"> Edit </a>
-                
+
                             <form method="POST" action="{{route('admin.user.destroy', [$user->id])}}" class="d-inline" onsubmit="return confirm('Delete this user permanently?')">
-                
+
                                 @csrf
-                
+
                                 <input type="hidden" name="_method" value="DELETE">
-                
+
                                 <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                
+
                             </form>
-                
+
                         </td>
-            
+
                     </tr>
-            
+
                     @endforeach
-        
+
                 </tbody>
-    
+
             </table>
 
         </div>
@@ -117,13 +117,13 @@
         <form action="{{ route('admin.user.changepassword',$user->id) }}" method="POST">
             @csrf
         <div class="modal-body">
-            
+
             <input type="password" name='password' class="form-control {{$errors->first('password') ? "is-invalid" : "" }} " id="password" placeholder="New Password">
-            
+
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          
+
           <button type="submit" class="btn btn-primary">Update</button>
 
         </div>

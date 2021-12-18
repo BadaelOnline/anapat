@@ -101,7 +101,7 @@
       <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <a class="collapse-item" href="{{ route('admin.cursos') }}">Cursos</a>
-          <a class="collapse-item" href="{{ route('admin.pcategory') }}">Cursos Categories</a>
+          <a class="collapse-item" href="{{ route('admin.inactiveCursos') }}">Inactivo Cursos</a>
         </div>
       </div>
     </li>
@@ -136,23 +136,23 @@
       </li>
     @endcan
 
-    <li class="nav-item {{ in_array(Route::currentRouteName(),[
-            'admin.horario',
-        ])? 'active' : ''}}">
-      <a class="nav-link" href="{{ route('admin.horario') }}">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Horario</span></a>
-    </li>
+{{--    <li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
+{{--            'admin.horario',--}}
+{{--        ])? 'active' : ''}}">--}}
+{{--      <a class="nav-link" href="{{ route('admin.horario') }}">--}}
+{{--        <i class="fas fa-fw fa-table"></i>--}}
+{{--        <span>Horario</span></a>--}}
+{{--    </li>--}}
 
 
 
-    <li class="nav-item {{ in_array(Route::currentRouteName(),[
-            'admin.asistent',
-        ])? 'active' : ''}}">
-      <a class="nav-link" href="{{ route('admin.asistent') }}">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Asistent</span></a>
-    </li>
+{{--    <li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
+{{--            'admin.asistent',--}}
+{{--        ])? 'active' : ''}}">--}}
+{{--      <a class="nav-link" href="{{ route('admin.asistent') }}">--}}
+{{--        <i class="fas fa-fw fa-table"></i>--}}
+{{--        <span>Asistent</span></a>--}}
+{{--    </li>--}}
 
   {{--<li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
   {{--'admin.page',--}}
@@ -193,7 +193,7 @@
             'admin.about',
             'admin.banner',
             'admin.general',
-        ])? 'active' : ''}}"">
+        ])? 'active' : ''}}">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-fw fa-wrench"></i>
         <span>{{__('message.Settings')}}</span>

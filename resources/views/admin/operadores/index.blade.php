@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.operadores.create') }}" class="btn btn-success">Create Operadores</a>
+        <a href="{{ route('admin.operadores.create') }}" class="btn btn-success">{{__('message.add_new')}} Operadores</a>
 
     </div>
 
