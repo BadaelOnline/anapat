@@ -37,6 +37,16 @@
   width: 100%;
   height: 100%;
 }
+input[type="radio"] {
+    cursor: pointer;
+}
+input[type="radio"]:focus {
+    color: #495057;
+    background-color: #0477b1;
+    border-color: transparent;
+    outline: 0;
+    box-shadow: none;
+}
 </style>
 @endsection
 @section('content')

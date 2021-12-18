@@ -198,18 +198,10 @@ class CursosController extends Controller
 //        $Cursos->date = $request->date;
 
 
-        $new_cover = $request->file('cover');
+       
 
-        if($new_cover){
-            if($cursos->cover && file_exists(storage_path('app/public/' . $cursos->cover))){
-                \Storage::delete('public/'. $cursos->cover);
-            }
 
-            $new_cover_path = $new_cover->store('images/Cursos', 'public');
 
-<<<<<<< HEAD
-            $cursos->cover = $new_cover_path;
-=======
         $asistentes_pdf = $request->file('asistentes_pdf');
 
         if($asistentes_pdf){
@@ -220,7 +212,7 @@ class CursosController extends Controller
             $asistentes_pdf_path = $asistentes_pdf->store('images/Cursos', 'public');
 
             $cursos->asistentes_pdf = $asistentes_pdf_path;
->>>>>>> 979122e0b6a979f4cfff317719fb51dfff5b0116
+
 
         }
 
