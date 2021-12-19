@@ -71,7 +71,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
      // Manage asistent
     Route::get('asistent', [AsistentController::class, 'index'])->name('admin.asistent');
-    Route::get('asistent/create/{id}', [AsistentController::class, 'create'])->name('admin.asistent.create');
+    Route::get('asistent/create', [AsistentController::class, 'create'])->name('admin.asistent.create');
     Route::post('asistent/create', [AsistentController::class, 'store'])->name('admin.asistent.store');
     Route::get('asistent/edit/{id}', [AsistentController::class, 'edit'])->name('admin.asistent.edit');
     Route::post('asistent/edit/{id}', [AsistentController::class, 'update'])->name('admin.asistent.update');
@@ -125,7 +125,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     // Manage Pages
     Route::get('horario', [HorarioController::class, 'index'])->name('admin.horario');
-    Route::get('horario/create/{id}', [HorarioController::class, 'create'])->name('admin.horario.create');
+    Route::get('horario/create', [HorarioController::class, 'create'])->name('admin.horario.create');
     Route::post('horario/create', [HorarioController::class, 'store'])->name('admin.horario.store');
     Route::get('horario/edit/{id}', [HorarioController::class, 'edit'])->name('admin.horario.edit');
     Route::post('horario/edit/{id}', [HorarioController::class, 'update'])->name('admin.horario.update');

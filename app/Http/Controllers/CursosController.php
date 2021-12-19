@@ -4,16 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\{Asistent,
-    Cursos,
-    EntidadesFormadoreas,
-    Examen,
-    Formadores,
-    Horario,
-    Operadores,
-    Pcategory,
-    Tipo_De_Curso,
-    Tipo_Maquina};
+use App\Models\{
+    Cursos, EntidadesFormadoreas, Examen, Formadores, Pcategory, Tipo_De_Curso, Tipo_Maquina
+};
 
 class CursosController extends Controller
 {
@@ -52,7 +45,7 @@ class CursosController extends Controller
         $formador=Formadores::select('id','nombre')->get();
         $tipo_maquina=Tipo_Maquina::select('id','tipo_maquina')->get();
         $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
-        $examen_t=Examen::select('id','nombre')->where('tipo',1)->get();
+        $examen_t=Examen::select('id','nombre')->where('tipo',2)->get();
         $examen_p=Examen::select('id','nombre')->where('tipo',2)->get();
         $formadors=Formadores::select('id','nombre')->get();
         $formadors2=Formadores::select('id','nombre')->get();
@@ -76,7 +69,7 @@ class CursosController extends Controller
     {
 //dd($request);
 
-        $cursos = new Cursos($request->except('_token','tipo_maquina','examen-t','examen-p','publico-privado'));
+        $cursos = new Cursos($request->except('_token','tipo_maquina'));
 //        dd($cursos);
 
 //        $cursos = new Cursos();
@@ -107,9 +100,6 @@ class CursosController extends Controller
             }
 
         }
-        $cursos->examen_t = $request->examen_t;
-        $cursos->examen_p = $request->examen_p;
-        $cursos->publico_privado = $request->publico_privado;
 
 
 
@@ -177,16 +167,13 @@ class CursosController extends Controller
         $formador=Formadores::select('id','nombre')->get();
         $tipo_maquina=Tipo_Maquina::select('id','tipo_maquina')->get();
         $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
-        $examen_t=Examen::select('id','nombre')->where('tipo',1)->get();
+        $examen_t=Examen::select('id','nombre')->where('tipo',2)->get();
         $examen_p=Examen::select('id','nombre')->where('tipo',2)->get();
         $formadors=Formadores::select('id','nombre')->get();
         $formadors2=Formadores::select('id','nombre')->get();
         $formadors3=Formadores::select('id','nombre')->get();
-        $asistent = Asistent::orderBy('id','desc')->where('curso',$id)->get();
-        $operador = Operadores::orderBy('id','desc')->get();
-        $horario = Horario::orderBy('id','desc')->where('curso',$id)->get();
 
-        return view('admin.Cursos.edit',compact('cursos','horario','asistent','operador','entidad','formador','tipo_maquina','tipo_curso','examen_t','examen_p','formadors','formadors2','formadors3'));
+        return view('admin.Cursos.edit',compact('cursos','entidad','formador','tipo_maquina','tipo_curso','examen_t','examen_p','formadors','formadors2','formadors3'));
     }
 
     /**
@@ -204,51 +191,15 @@ class CursosController extends Controller
 //        ])->validate();
 
         $cursos = Cursos::findOrFail($id);
-//        dd($request);
-
-        $cursos->curso = $request->curso;
-        $cursos->tipo_curso = $request->tipo_curso;
-        $cursos->codigo = $request->codigo;
-        $cursos->entidad = $request->entidad;
-        $cursos->formador = $request->formador;
-        $cursos->formador_apoyo_1 = $request->formador_apoyo_1;
-        $cursos->formador_apoyo_2 = $request->formador_apoyo_2;
-        $cursos->formador_apoyo_3 = $request->formador_apoyo_3;
-        $cursos->fecha_inicio = $request->fecha_inicio;
-        $cursos->direccion = $request->direccion;
-        $cursos->ciudad = $request->ciudad;
-        $cursos->provincia = $request->provincia;
-        $cursos->codigo_postal = $request->codigo_postal;
-        $cursos->examen_t = $request->examen_t;
-        $cursos->examen_p = $request->examen_p;
-        $cursos->fecha_alta = $request->fecha_alta;
-        $cursos->publico_privado = $request->publico_privado;
-        $cursos->observaciones = $request->observaciones;
-        $cursos->cerrado = $request->cerrado;
-        $cursos->estado = $request->estado;
-        $x =$request->input('tipo_maquina');
+//        $Cursos->pcategory_id = $request->category;
+//        $Cursos->name = $request->name;
+//        $Cursos->client = $request->client;
+//        $Cursos->desc = $request->desc;
+//        $Cursos->date = $request->date;
 
 
+       
 
-        for( $i=0 ; $i <= count($x)-1 ;$i++ ){
-            if($i == 0){
-                $cursos->tipo_maquina_1 = $x[$i];
-//                dd($x[$i]);
-                $cursos->tipo_maquina_2 = null;
-                $cursos->tipo_maquina_3 = null;
-                $cursos->tipo_maquina_4 = null;
-            }elseif ($i == 1){
-                $cursos->tipo_maquina_2 = $x[$i];
-                $cursos->tipo_maquina_3 = null;
-                $cursos->tipo_maquina_4 = null;
-            }elseif ($i == 2){
-                $cursos->tipo_maquina_3 = $x[$i];
-                $cursos->tipo_maquina_4 = null;
-            }elseif ($i == 3){
-                $cursos->tipo_maquina_4 = $x[$i];
-            }
-
-        }
 
 
         $asistentes_pdf = $request->file('asistentes_pdf');
@@ -261,6 +212,7 @@ class CursosController extends Controller
             $asistentes_pdf_path = $asistentes_pdf->store('images/Cursos', 'public');
 
             $cursos->asistentes_pdf = $asistentes_pdf_path;
+
 
         }
 

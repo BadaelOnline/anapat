@@ -13,7 +13,7 @@
 
     <div class="container">
 
-        <div class="form-group ml-5">
+        <div class="form-group ">
 
             <label for="name" class="col-sm-2 col-form-label">Name</label>
 
@@ -29,11 +29,11 @@
 
         </div>
    
-        <div class="form-group ml-5">
+        <div class="form-group ">
    
             <div class="col-sm-3">
    
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-info">Update</button>
    
             </div>
    

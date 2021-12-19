@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{About, General, Page, Post, Team, User};
+use App\Models\{About, Cursos, Formadores, General, Operadores, Page, Post, Team, User};
 
 class GeneralController extends Controller
 {
     public function dashboard(){
         $admin = User::count();
-        $team = Team::count();
-        $blog = Post::count();
-        $page = Page::count();
-        return view ('admin.dashboard', compact('admin','blog','page','team'));
+        $formadores = Formadores::count();
+        $operador = Operadores::count();
+        $activo_Curso = Cursos::orderBy('id','desc')->where('estado',1)->count();
+//        $x = count($activo_Curso);
+        return view ('admin.dashboard', compact('admin','operador','activo_Curso','formadores'));
     }
 
     public function general(){
@@ -25,13 +26,13 @@ class GeneralController extends Controller
     public function generalUpdate(Request $request)
     {
         \Validator::make($request->all(), [
-     
+
             "title" => "required",
             "address1" => "required",
             "phone" => "required" ,
             "email" => "required",
             "footer" => "required",
-            "gmaps" => "required"       
+            "gmaps" => "required"
         ])->validate();
 
         $general = General::find(1);
@@ -82,11 +83,11 @@ class GeneralController extends Controller
         if ( $general->save()) {
 
             return redirect()->route('admin.general')->with('success', 'Data updated successfully');
-    
+
            } else {
-               
+
             return redirect()->route('admin.general')->with('error', 'Data failed to update');
-    
+
            }
     }
 
@@ -108,11 +109,11 @@ class GeneralController extends Controller
         if ( $about->save()) {
 
             return redirect()->route('admin.about')->with('success', 'Data updated successfully');
-    
+
            } else {
-               
+
             return redirect()->route('admin.about')->with('error', 'Data failed to update');
-    
+
            }
 
     }

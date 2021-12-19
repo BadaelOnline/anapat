@@ -5,7 +5,7 @@
               <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
               </div>
-    
+
               <!-- Content Row -->
               <div class="row">
 
@@ -36,7 +36,7 @@
                         </div>
                         <div class="text-end pt-1">
                           <p class="text-sm mb-0 text-capitalize">FORMADOR</p>
-                          <h4 class="mb-0">2,300</h4>
+                          <h4 class="mb-0">{{$formadores}}</h4>
                         </div>
                       </div>
                       <hr class="dark horizontal my-0">
@@ -53,7 +53,7 @@
                         </div>
                         <div class="text-end pt-1">
                           <p class="text-sm mb-0 text-capitalize">OPERADOR</p>
-                          <h4 class="mb-0">3,462</h4>
+                          <h4 class="mb-0">{{$operador}}</h4>
                         </div>
                       </div>
                       <hr class="dark horizontal my-0">
@@ -70,7 +70,7 @@
                         </div>
                         <div class="text-end pt-1">
                           <p class="text-sm mb-0 text-capitalize">ACTIVE CURSO</p>
-                          <h4 class="mb-0">$103,430</h4>
+                          <h4 class="mb-0">{{$activo_Curso}}</h4>
                         </div>
                       </div>
                       <hr class="dark horizontal my-0">

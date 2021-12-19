@@ -31,7 +31,8 @@
   <link href="{{ asset('front/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
+  <!-- <link href="{{ asset('front/css/style.css') }}" rel="stylesheet"> -->
+  <link href="{{ asset('front/css/style-anapat.css') }}" rel="stylesheet">
   
   {{-- Sharethis --}}
   {!! $general->sharethis !!}
@@ -50,31 +51,52 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <a href="/" class="logo mr-auto"><img src="{{ asset('storage/'.$general->logo) }}" alt="" class="img-fluid"></a>
+      <a href="/" class="logo ">
+        <img src="{{ asset('admin/img/logo-anpat.png')}}" alt="" class="img-fluid"></a>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li {{ request()->is('/') ? 'class=active' : '' }}><a href="{{ route('homepage') }}">Home</a></li>
 
-          <li class="drop-down"><a href="">About</a>
+          <li class="drop-down"><a href="">Anapat</a>
             <ul>
-              <li {{ request()->is('about-us') ? 'class=active' : '' }}><a href="{{ route('about') }}">About Us</a></li>
-              <li {{ request()->is('testimonials') ? 'class=active' : '' }}><a href="{{ route('testi') }}">Testimonials</a></li>
+              <li ><a href="{{ route('about') }}">Anapat</a></li>
+              <li><a href="{{ route('testi') }}">Partner</a></li>
             </ul>
           </li>
-
-          <li {{ request()->is('services') ? 'class=active' : '' }}><a href="{{ route('service') }}">Services</a></li>
-          <li {{ request()->is('portfolio') ? 'class=active' : '' }}><a href="{{ route('portfolio') }}">Portfolio</a></li>
-          <li {{ request()->is('blog') ? 'class=active' : '' }}><a href="{{ route('blog') }}">Blog</a></li>
-      
+          <li class="drop-down"><a href="">Training</a>
+            <ul>
+              <li ><a href="{{ route('about') }}">Training Entity</a></li>
+              <li ><a href="{{ route('testi') }}">Courses</a></li>
+              <li ><a href="{{ route('testi') }}">Card Consultation</a></li>
+            </ul>
+          </li>
+          <li class="drop-down"><a href="">Documentation</a>
+            <ul>
+              <li class="drop-down"><a href="">Didactics</a>
+            <ul>
+              <li ><a href="{{ route('about') }}">Guides</a></li>
+              <li ><a href="{{ route('testi') }}">Manuals</a></li>
+            </ul>
+        
+              </a></li>
+              <li class="drop-down"><a href="">Forms</a>
+            <ul>
+              <li ><a href="{{ route('about') }}">Inscription</a></li>
+              <li ><a href="{{ route('testi') }}">Come down </a></li>
+            </ul>
+         
+              </a></li>
+              <li ><a href="{{ route('testi') }}">Others</a></li>
+            </ul>
+          </li>
+          <li ><a href="">News</a></li>
+          <li><a href="">Contact</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
       <div class="header-social-links">
-        <a href="{{ $general->twitter }}" target="_blank" class="twitter"><i class="icofont-twitter"></i></a>
-        <a href="{{ $general->facebook }}" target="_blank" class="facebook"><i class="icofont-facebook"></i></a>
-        <a href="{{ $general->instagram }}" target="_blank" class="instagram"><i class="icofont-instagram"></i></a>
-        <a href="{{ $general->linkedin }}" target="_blank" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+        <a href=""><i class="icofont-ui-user"></i></a>
       </div>
 
     </div>
@@ -89,85 +111,54 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Company</h3>
-            <p>
-              {{ $general->address1 }} <br>
-              {{ $general->address2 }}<br>
-              <a href="{{ $general->gmaps }}" target="_blank" rel="noopener noreferrer">(Go to gmaps)</a>
-              <br><br>
-              
-              <strong>Phone:</strong> {{ $general->phone }}<br>
-              <strong>Email:</strong> {{ $general->email }}<br>
-            </p>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              @foreach ($link as $link)
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ $link->link }}">{{ $link->name }}</a></li>
-              @endforeach
-            
-            </ul>
-          </div>
-
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Latest Posts</h4>
+          <h3>Company</h3>
             <ul>
-              @foreach ($lpost as $lpost)
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('blogshow',$lpost->slug) }}">{{ $lpost->title }}</a></li>
-              @endforeach
-             
+              <li> ANAPAT</li>
+              <li>   C / Albasanz, 67– 2º – Office 47.</li>
+              <li>     28037 Madrid</li>
+              <li> 28037 Madrid</li>
+              <li> <strong>Tel:</strong> 91 375 81 22</li>
+              <li> <strong>FAX:</strong> 91 327 23 55</li>
+              <li> <a href="">secretario@anapat.es</a></li>
             </ul>
           </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Join Our Newsletter</h4>
-            <p>Subscribe to the latest article updates via email</p>
-            @if (session('success'))
-
-            <div class="alert alert-success">
-
-                {{ session('success') }}
-
-            </div>
-
-            @endif
-
-            <form action="{{ route('subscribe') }}" method="post">
-              @csrf
-              <input type="email" name="email" class="form-control {{$errors->first('email') ? "is-invalid" : "" }} " value="{{old('email')}}" required><input type="submit" value="Subscribe">
-              <div class="invalid-feedback">
-                {{ $errors->first('email') }}    
-            </div>
-            </form>
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h3>Site Map</h3>
+            <ul>
+              <li> <a href="">Home</a></li>
+              <li> <a href="">About</a></li>
+              <li><a href="">Contact</a></li>
+              <li> <a href="">blog</a></li>
+            </ul>
           </div>
-
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h3>useful link</h3>
+            <ul>
+              <li> <a href="">Training Entity</a></li>
+              <li> <a href="">Partner</a></li>
+              <li><a href="">Course</a></li>
+              <li> <a href="">Card</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-links">
+         <img src="{{ asset('admin/img/logo-anpat.png')}}" alt="">
+          </div>
         </div>
       </div>
     </div>
-
     <div class="container d-md-flex py-4">
-
       <div class="mr-md-auto text-center text-md-left">
         <div class="copyright">
-          &copy; Copyright <strong><span>{{ $general->footer }}</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/company-free-html-bootstrap-template/ -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> ・ Developed by <a href="https://codelapan.com/">Codelapan</a>
+        Copyright © 2021 anapat | Powered by anapat
         </div>
       </div>
-      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+      <!-- <div class="social-links text-center text-md-right pt-3 pt-md-0">
         <a href="{{ $general->twitter }}" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
         <a href="{{ $general->facebook }}" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
         <a href="{{ $general->instagram }}" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
         <a href="{{ $general->linkedin }}" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
+      </div> -->
     </div>
   </footer><!-- End Footer -->
 
